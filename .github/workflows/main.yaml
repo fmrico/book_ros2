@@ -23,7 +23,7 @@ jobs:
         with:
           required-ros-distributions: foxy
       - name: build and test
-        uses: ros-tooling/action-ros-ci@0.2.1
+        uses: ros-tooling/action-ros-ci@0.2.3
         with:
           package-name: mr2_behavior_trees mr2_hfsm_behaviors mr2_intro_ros2 mr2_kobuki mr2_navigation mr2_reactive_behaviors
           target-ros2-distro: foxy

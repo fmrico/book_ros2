@@ -260,6 +260,7 @@ TEST(bt_action, get_waypoint_btn)
   std::vector<double> wp1 = {1.07, -12.38};
   std::vector<double> wp2 = {-5.32, -8.85};
   std::vector<double> wp3 = {-0.56, 0.24};
+
   node->set_parameter({"waypoints", pw_ids});
   node->set_parameter({"recharge", recharge_wp});
   node->set_parameter({"wp1", wp1});

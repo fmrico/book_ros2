@@ -1,0 +1,5 @@
+<root main_tree_to_execute = "MainTree" >
+    <BehaviorTree ID="MainTree">
+        <Patrol    name="patrol"/>
+    </BehaviorTree>
+</root>

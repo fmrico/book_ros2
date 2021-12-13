@@ -1,0 +1,8 @@
+<root main_tree_to_execute = "MainTree" >
+    <BehaviorTree ID="MainTree">
+        <ReactiveSequence>
+            <BatteryChecker    name="battery_checker"/>
+            <Patrol    name="patrol"/>
+        </ReactiveSequence>
+    </BehaviorTree>
+</root>

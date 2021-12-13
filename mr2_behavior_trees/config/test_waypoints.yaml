@@ -1,0 +1,7 @@
+patrolling_node:
+  ros__parameters:
+    waypoints: [recharge, wp1, wp2, wp3]
+    recharge: [3.67, -0.24]
+    wp1: [1.07, -12.38]
+    wp2: [-5.32, -8.85]
+    wp3: [-0.56, 0.24]

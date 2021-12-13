@@ -1,0 +1,14 @@
+kobuki_ros_node:
+  ros__parameters:
+    acceleration_limiter: true
+    battery_capacity: 16.5
+    battery_low: 14.0
+    battery_dangerous: 13.2
+    device_port: /dev/kobuki
+    cmd_vel_timeout_sec: 0.6
+    odom_frame: odom
+    base_frame: base_link
+    publish_tf: true
+    use_imu_heading: true
+    wheel_left_joint_name: wheel_left_joint
+    wheel_right_joint_name: wheel_right_joint

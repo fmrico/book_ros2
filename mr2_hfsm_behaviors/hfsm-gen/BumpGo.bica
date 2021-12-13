@@ -1,0 +1,8 @@
+<component id="BumpGo">
+ <state id="Turn" x="-878" initial="false" y="-297"/>
+ <state id="Forward" x="-1000" initial="true" y="-452"/>
+ <state id="Back" x="-747" initial="false" y="-456"/>
+ <transition src="Forward" dst="Back"/>
+ <transition src="Back" dst="Turn"/>
+ <transition src="Turn" dst="Forward"/>
+</component>

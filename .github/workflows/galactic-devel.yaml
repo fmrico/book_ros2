@@ -1,0 +1,46 @@
+name: galactic-devel
+
+on:
+  pull_request:
+    branches:
+      - galactic-devel
+  push:
+    branches:
+      - galactic-devel
+      
+jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04]
+      fail-fast: false
+    steps:
+      - name: Install popf deps
+        run: sudo apt-get install libfl-dev
+      - name: Setup ROS 2
+        uses: ros-tooling/setup-ros@0.2.1
+        with:
+          required-ros-distributions: galactic
+      - name: build and test
+        uses: ros-tooling/action-ros-ci@0.2.1
+        with:
+          package-name: mr2_behavior_trees mr2_hfsm_behaviors mr2_intro_ros2 mr2_kobuki mr2_navigation mr2_reactive_behaviors
+          target-ros2-distro: galactic
+          colcon-defaults: |
+            {
+              "test": {
+                "parallel-workers" : 1
+              }
+            }
+          vcs-repo-file-url: https://raw.githubusercontent.com/IntelligentRoboticsLabs/ros2_planning_system/master/dependency_repos.repos
+          colcon-mixin-name: coverage-gcc
+          colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+      - name: Codecov
+        uses: codecov/codecov-action@v1.1.0
+        with:
+          file: ros_ws/lcov/total_coverage.info
+          flags: unittests
+          name: codecov-umbrella
+          # yml: ./codecov.yml
+          fail_ci_if_error: false

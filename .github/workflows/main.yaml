@@ -1,12 +1,12 @@
-name: galactic-devel
+name: main
 
 on:
   pull_request:
     branches:
-      - galactic-devel
+      - main
   push:
     branches:
-      - galactic-devel
+      - main
       
 jobs:
   build-and-test:
@@ -33,9 +33,8 @@ jobs:
                 "parallel-workers" : 1
               }
             }
-          vcs-repo-file-url: https://raw.githubusercontent.com/IntelligentRoboticsLabs/ros2_planning_system/master/dependency_repos.repos
           colcon-mixin-name: coverage-gcc
-          colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+          colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/main/index.yaml
       - name: Codecov
         uses: codecov/codecov-action@v1.1.0
         with:

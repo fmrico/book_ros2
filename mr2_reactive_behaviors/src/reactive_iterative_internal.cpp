@@ -28,7 +28,7 @@ class Avoidance : public rclcpp::Node
 {
 public:
   Avoidance()
-  : Node("bump_stop")
+  : Node("avoidance")
   {
     vel_pub_ = create_publisher<geometry_msgs::msg::Twist>("output_vel", 100);
     scan_sub_ = create_subscription<sensor_msgs::msg::LaserScan>(

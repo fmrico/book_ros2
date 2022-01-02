@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <algorithm>
+
 #include "br2_tracking/PIDController.hpp"
 
 namespace br2_tracking
@@ -45,7 +47,7 @@ PIDController::get_output(double new_reference)
   double output = 0.0;
 
   // Proportional Error
-  double direction = 1.0;
+  double direction = 0.0;
   if (ref != 0.0) {
     direction = ref / fabs(ref);
   }
@@ -67,7 +69,7 @@ PIDController::get_output(double new_reference)
 
   output = KP_ * output + KI_ * int_error_ + KD_ * deriv_error;
 
-  return output;
+  return std::clamp(output, min_output_, max_output_);
 }
 
 }  // namespace br2_tracking

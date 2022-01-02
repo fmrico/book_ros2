@@ -1,24 +1,60 @@
 repositories:
-  ThirdParty/kobuki_ros:
+  ThirdParty/gazebo_ros2_control:
     type: git
-    url: https://github.com/kobuki-base/kobuki_ros.git
-    version: devel
-  ThirdParty/diagnostics:
+    url: https://github.com/pal-robotics-forks/gazebo_ros2_control.git
+    version: add-imu-sensor-parse
+  ThirdParty/ros2_control:
     type: git
-    url: https://github.com/ros/diagnostics.git
-    version: foxy
-  ThirdParty/kobuki_ros_iterfaces:
+    url: https://github.com/ros-controls/ros2_control.git
+    version: 0.7.1
+  ThirdParty/ros2_controllers:
     type: git
-    url: https://github.com/kobuki-base/kobuki_ros_interfaces.git
-    version: devel
-  ThirdParty/rplidar_ros:
+    url: https://github.com/ros-controls/ros2_controllers.git
+    version: 0.4.0
+  ThirdParty/urdf_test:
     type: git
-    url: https://github.com/allenh1/rplidar_ros.git
-    version: ros2
-  ThirdParty/laser_filters:
+    url: https://github.com/pal-robotics/urdf_test
+    version: 2.0.0
+  ThirdParty/launch_pal:
     type: git
-    url: https://github.com/ros-perception/laser_filters.git
-    version: ros2
+    url: https://github.com/pal-robotics/launch_pal.git
+    version: 0.0.3
+  ThirdParty/pal_gazebo_worlds:
+    type: git
+    url: https://github.com/pal-robotics/pal_gazebo_worlds.git
+    version: foxy-devel
+  ThirdParty/pmb2_robot:
+    type: git
+    url: https://github.com/pal-robotics/pmb2_robot.git
+    version: foxy-devel
+  ThirdParty/pmb2_navigation:
+    type: git
+    url: https://github.com/pal-robotics/pmb2_navigation.git
+    version: foxy-devel
+  ThirdParty/twist_mux:
+    type: git
+    url: https://github.com/ros-teleop/twist_mux.git
+    version: foxy-devel
+  ThirdParty/tiago_robot:
+    type: git
+    url: https://github.com/fmrico/tiago_robot.git
+    version: no-arm
+  ThirdParty/tiago_simulation:
+    type: git
+    url: https://github.com/pal-robotics/tiago_simulation.git
+    version: foxy-devel
+  ThirdParty/hey5_description:
+    type: git
+    url: https://github.com/pal-robotics/hey5_description.git
+    version: foxy-devel
+  ThirdParty/pal_gripper:
+    type: git
+    url: https://github.com/pal-robotics/pal_gripper.git
+    version: foxy-devel
+  ThirdParty/tiago_description_calibration:
+    type: git
+    url: https://github.com/pal-robotics/tiago_description_calibration.git
+    version: foxy-devel
   ThirdParty/Groot:
     type: git
     url: https://github.com/BehaviorTree/Groot.git

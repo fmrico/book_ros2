@@ -1,5 +1,0 @@
-<root main_tree_to_execute = "MainTree" >
-    <BehaviorTree ID="MainTree">
-        <Recharge    name="recharge"/>
-    </BehaviorTree>
-</root>

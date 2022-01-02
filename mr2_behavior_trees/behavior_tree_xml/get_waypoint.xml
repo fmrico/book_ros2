@@ -1,5 +1,0 @@
-<root main_tree_to_execute = "MainTree" >
-    <BehaviorTree ID="MainTree">
-      <GetWaypoint    name="recharge" wp_id="{id}" waypoint="{waypoint}"/>
-    </BehaviorTree>
-</root>

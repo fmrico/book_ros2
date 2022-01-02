@@ -1,5 +1,0 @@
-<root main_tree_to_execute = "MainTree" >
-    <BehaviorTree ID="MainTree">
-        <Move    name="move" goal="{goal}"/>
-    </BehaviorTree>
-</root>

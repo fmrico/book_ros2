@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(br2_fsm_bumpgo)
+project(br2_fsm_bumpgo_cpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -14,11 +14,16 @@ set(dependencies
   geometry_msgs
 )
 
-add_executable(bumpgo_fsm src/bumpgo_fsm.cpp)
-ament_target_dependencies(bumpgo_fsm ${dependencies})
+include_directories(include)
+
+add_executable(bumpgo
+  src/br2_fsm_bumpgo_cpp/BumpGoNode.cpp
+  src/bumpgo_main.cpp
+)
+ament_target_dependencies(bumpgo ${dependencies})
 
 install(TARGETS
-bumpgo_fsm
+  bumpgo
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}

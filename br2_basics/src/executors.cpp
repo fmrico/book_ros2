@@ -66,8 +66,8 @@ int main(int argc, char * argv[]) {
   auto node_sub = std::make_shared<SubscriberNode>();
 
   rclcpp::executors::SingleThreadedExecutor executor;
-  rclcpp::executors::MultiThreadedExecutor executor(
-    rclcpp::executor::ExecutorArgs(), 8);
+  // rclcpp::executors::MultiThreadedExecutor executor(
+  //   rclcpp::executor::ExecutorArgs(), 8);
 
   executor.add_node(node_pub);
   executor.add_node(node_sub);

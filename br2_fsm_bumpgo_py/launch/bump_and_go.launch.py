@@ -18,17 +18,18 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    kobuki_cmd = Node(package='br2_fsm_bumpgo',
-                      executable='bumpgo_fsm',
+    kobuki_cmd = Node(package='br2_fsm_bumpgo_py',
+                      executable='bumpgo.py',
                       output='screen',
+                      parameters=[{
+                        'use_sim_time': True
+                      }],
                       remappings=[
                         ('input_scan', '/scan_raw'),
                         ('output_vel', '/nav_vel')
                       ])
 
     ld = LaunchDescription()
-
-    # Add any actions
     ld.add_action(kobuki_cmd)
 
     return ld

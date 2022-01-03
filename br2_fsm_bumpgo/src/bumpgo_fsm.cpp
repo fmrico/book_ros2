@@ -29,7 +29,7 @@ class BumpAndGo : public rclcpp::Node
 {
 public:
   BumpAndGo()
-  : Node("bump_stop"), state_(GOING_FORWARD)
+  : Node("bump_go"), state_(GOING_FORWARD)
   {
     vel_pub_ = create_publisher<geometry_msgs::msg::Twist>("output_vel", 100);
     scan_sub_ = create_subscription<sensor_msgs::msg::LaserScan>(

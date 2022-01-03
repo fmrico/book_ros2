@@ -26,10 +26,16 @@ from launch.substitutions import LaunchConfiguration, PythonExpression
 def generate_launch_description():
     tiago_gazebo_dir = get_package_share_directory('tiago_gazebo')
 
+    world = LaunchConfiguration('world', default='home')
+    declare_world_cmd = DeclareLaunchArgument(
+        'world',
+        default_value='home',
+        description='World name')
+
     tiago_sim_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(tiago_gazebo_dir, 'launch', 'tiago_gazebo.launch.py')),
         launch_arguments={
-          'world_name': 'home'
+          'world_name': world
         }.items())
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
@@ -42,5 +48,6 @@ def generate_launch_description():
     ld.add_action(tiago_sim_cmd)
  
     ld.add_action(declare_use_sim_time_cmd)
+    ld.add_action(declare_world_cmd)
 
     return ld

@@ -24,7 +24,7 @@ int main(int argc, char * argv[]) {
   rclcpp::Rate loop_rate(500ms);
   int counter = 0;
   while (rclcpp::ok()) {
-    RCLCPP_DEBUG(node->get_logger(), "Hello %d", counter++);
+    RCLCPP_INFO(node->get_logger(), "Hello %d", counter++);
 
     rclcpp::spin_some(node);
     loop_rate.sleep();

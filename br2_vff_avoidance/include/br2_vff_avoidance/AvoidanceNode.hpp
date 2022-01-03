@@ -24,7 +24,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
-namespace br2_reactive_behaviors
+namespace br2_vff_avoidance
 {
 
 struct VFFVectors
@@ -59,6 +59,6 @@ private:
   sensor_msgs::msg::LaserScan::UniquePtr last_scan_;
 };
 
-}  // namespace br2_reactive_behaviors
+}  // namespace br2_vff_avoidance
 
 #endif  // BR2_REACTIVE_BEHAVIORS__AVOIDANCENODE_HPP_

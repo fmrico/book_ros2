@@ -71,7 +71,7 @@ AvoidanceNode::control_cycle()
   vel.linear.x = std::clamp(module, 0.0, 0.3);  // truncate linear vel to [0.0, 0.3] m/s
   vel.angular.z = std::clamp(angle, -0.5, 0.5);  // truncate rotation vel to [-0.5, 0.5] rad/s
 
-  //vel_pub_->publish(vel);
+  vel_pub_->publish(vel);
 
   // Produce debug information, if any interested
   if (vff_debug_pub_->get_subscription_count() > 0) {

@@ -15,20 +15,22 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
-
 def generate_launch_description():
 
-    kobuki_cmd = Node(package='br2_tracking',
-                      executable='bumpgo_rqt_cascade',
-                      output='screen',
-                      remappings=[
-                        ('input_scan', '/scan_filtered'),
-                        ('output_vel', '/commands/velocity')
-                      ])
+  vff_avoidance_cmd = Node(
+    package='br2_vff_avoidance',
+    executable='avoidance_vff',
+    parameters=[{
+      'use_sim_time': True
+    }],
+    remappings=[
+      ('input_scan', '/scan_raw'),
+      ('output_vel', '/key_vel')
+    ],
+    output='screen'
+  )
+  
+  ld = LaunchDescription()
+  ld.add_action(vff_avoidance_cmd)
 
-    ld = LaunchDescription()
-
-    # Add any actions
-    ld.add_action(kobuki_cmd)
-
-    return ld
+  return ld

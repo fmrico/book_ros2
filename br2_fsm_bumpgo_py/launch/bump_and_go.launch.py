@@ -19,7 +19,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     kobuki_cmd = Node(package='br2_fsm_bumpgo_py',
-                      executable='bumpgo.py',
+                      executable='bump_go_main',
                       output='screen',
                       parameters=[{
                         'use_sim_time': True

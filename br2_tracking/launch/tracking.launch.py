@@ -18,8 +18,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.substitutions import LaunchConfiguration
-from launch.actions import DeclareLaunchArgument
+
 
 def generate_launch_description():
 
@@ -28,7 +27,7 @@ def generate_launch_description():
         'config',
         'detector.yaml'
         )
-  
+
     object_tracker_cmd = Node(
         package='br2_tracking',
         executable='object_tracker',

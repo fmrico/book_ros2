@@ -18,7 +18,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    kobuki_cmd = Node(package='br2_fsm_bumpgo_cpp',
+    bumpgo_cmd = Node(package='br2_fsm_bumpgo_cpp',
                       executable='bumpgo',
                       output='screen',
                       parameters=[{
@@ -30,6 +30,6 @@ def generate_launch_description():
                       ])
 
     ld = LaunchDescription()
-    ld.add_action(kobuki_cmd)
+    ld.add_action(bumpgo_cmd)
 
     return ld

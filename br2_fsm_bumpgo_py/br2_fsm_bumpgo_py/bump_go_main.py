@@ -20,8 +20,8 @@ class BumpGoNode(Node):
         self.state = self.FORWARD 
         self.state_ts = self.get_clock().now()
 
-        self.TURNING_TIME = 3.0
-        self.BACKING_TIME = 3.0
+        self.TURNING_TIME = 2.0
+        self.BACKING_TIME = 2.0
         self.SCAN_TIMEOUT = 1.0
 
         self.SPEED_LINEAR = 0.3

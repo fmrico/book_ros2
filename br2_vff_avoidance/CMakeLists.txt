@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(br2_vff_avoidance)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_BUILD_TYPE Debug)
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -41,6 +42,9 @@ if(BUILD_TESTING)
 
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
+
+  find_package(ament_cmake_gtest REQUIRED)
+  add_subdirectory(tests)
 endif()
 
 ament_export_dependencies(${dependencies})

@@ -69,7 +69,7 @@ PIDController::get_output(double new_reference)
 
   output = KP_ * output + KI_ * int_error_ + KD_ * deriv_error;
 
-  return std::clamp(output, min_output_, max_output_);
+  return std::clamp(output, -max_output_, max_output_);
 }
 
 }  // namespace br2_tracking

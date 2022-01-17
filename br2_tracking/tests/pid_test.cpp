@@ -20,17 +20,17 @@
 
 TEST(pid_tests, pid_test_1)
 {
-  br2_tracking::PIDController pid(-1.0, 1.0, -1.0, 1.0);
+  br2_tracking::PIDController pid(0.0, 1.0, 0.0, 1.0);
 
   ASSERT_NEAR(pid.get_output(0.0), 0.0, 0.05);
-  ASSERT_LT(pid.get_output(0.1), -0.7);
+  ASSERT_LT(pid.get_output(0.1), 0.099);
   ASSERT_GT(pid.get_output(0.1), -0.4);
   ASSERT_LT(pid.get_output(0.1), 0.3);
 }
 
 TEST(pid_tests, pid_test_2)
 {
-  br2_tracking::PIDController pid(-1.0, 1.0, -1.0, 1.0);
+  br2_tracking::PIDController pid(0.0, 1.0, 0.0, 1.0);
   pid.set_pid(1.0, 0.0, 0.0);
 
   std::random_device rd;

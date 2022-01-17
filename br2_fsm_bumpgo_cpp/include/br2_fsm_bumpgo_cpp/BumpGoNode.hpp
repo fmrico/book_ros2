@@ -48,8 +48,8 @@ private:
   bool check_turn_2_forward(); 
   bool check_stop_2_forward(); 
 
-  const rclcpp::Duration TURNING_TIME {3s};
-  const rclcpp::Duration BACKING_TIME {3s};
+  const rclcpp::Duration TURNING_TIME {2s};
+  const rclcpp::Duration BACKING_TIME {2s};
   const rclcpp::Duration SCAN_TIMEOUT {1s};
 
   static constexpr float SPEED_LINEAR = 0.3f;

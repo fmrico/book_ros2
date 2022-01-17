@@ -15,22 +15,23 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
+
 def generate_launch_description():
 
-  vff_avoidance_cmd = Node(
-    package='br2_vff_avoidance',
-    executable='avoidance_vff',
-    parameters=[{
-      'use_sim_time': True
-    }],
-    remappings=[
-      ('input_scan', '/scan_raw'),
-      ('output_vel', '/key_vel')
-    ],
-    output='screen'
-  )
-  
-  ld = LaunchDescription()
-  ld.add_action(vff_avoidance_cmd)
+    vff_avoidance_cmd = Node(
+      package='br2_vff_avoidance',
+      executable='avoidance_vff',
+      parameters=[{
+        'use_sim_time': True
+      }],
+      remappings=[
+        ('input_scan', '/scan_raw'),
+        ('output_vel', '/nav_vel')
+      ],
+      output='screen'
+    )
 
-  return ld
+    ld = LaunchDescription()
+    ld.add_action(vff_avoidance_cmd)
+
+    return ld

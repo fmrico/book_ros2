@@ -1,6 +1,22 @@
+// Copyright 2021 Intelligent Robotics Lab
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <tf2/transform_datatypes.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+
+#include <memory>
 
 #include "br2_tf2_detector/ObstacleDetectorImprovedNode.hpp"
 
@@ -41,7 +57,7 @@ ObstacleDetectorImprovedNode::scan_callback(sensor_msgs::msg::LaserScan::UniqueP
     tf2::Stamped<tf2::Transform> odom2laser;
     try {
       odom2laser_msg = tf_buffer_.lookupTransform(
-        "odom", "base_laser_link", msg->header.stamp, rclcpp::Duration(200ms));
+        "odom", "base_laser_link", tf2::timeFromSec(rclcpp::Time(msg->header.stamp).seconds()));
       tf2::fromMsg(odom2laser_msg, odom2laser);
     } catch (tf2::TransformException & ex) {
       RCLCPP_WARN(get_logger(), "Obstacle transform not found: %s", ex.what());
@@ -52,7 +68,7 @@ ObstacleDetectorImprovedNode::scan_callback(sensor_msgs::msg::LaserScan::UniqueP
 
     geometry_msgs::msg::TransformStamped odom2object_msg;
     odom2object_msg.transform = tf2::toMsg(odom2object);
-  
+
     odom2object_msg.header.stamp = msg->header.stamp;
     odom2object_msg.header.frame_id = "odom";
     odom2object_msg.child_frame_id = "detected_obstacle";

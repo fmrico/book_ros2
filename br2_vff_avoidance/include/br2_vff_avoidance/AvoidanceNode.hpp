@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BR2_REACTIVE_BEHAVIORS__AVOIDANCENODE_HPP_
-#define BR2_REACTIVE_BEHAVIORS__AVOIDANCENODE_HPP_
+#ifndef BR2_VFF_AVOIDANCE__AVOIDANCENODE_HPP_
+#define BR2_VFF_AVOIDANCE__AVOIDANCENODE_HPP_
 
 #include <memory>
 #include <vector>
@@ -44,13 +44,14 @@ public:
   void scan_callback(sensor_msgs::msg::LaserScan::UniquePtr msg);
   void control_cycle();
 
-private:
+protected:
   VFFVectors get_vff(const sensor_msgs::msg::LaserScan & scan);
 
   visualization_msgs::msg::MarkerArray get_debug_vff(const VFFVectors & vff_vectors);
   visualization_msgs::msg::Marker make_marker(
     const std::vector<float> & vector, VFFColor vff_color);
 
+private:
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_pub_;
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr vff_debug_pub_;
   rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
@@ -61,4 +62,4 @@ private:
 
 }  // namespace br2_vff_avoidance
 
-#endif  // BR2_REACTIVE_BEHAVIORS__AVOIDANCENODE_HPP_
+#endif  // BR2_VFF_AVOIDANCE__AVOIDANCENODE_HPP_

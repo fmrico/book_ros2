@@ -16,6 +16,10 @@
 
 #include "br2_tracking/ObjectDetector.hpp"
 #include "br2_tracking/HeadController.hpp"
+
+#include "br2_tracking_msgs/msg/pan_tilt_command.hpp"
+
+#include "lifecycle_msgs/msg/transition.hpp"
 #include "rclcpp/rclcpp.hpp"
 
 int main(int argc, char * argv[])
@@ -24,22 +28,26 @@ int main(int argc, char * argv[])
 
   auto node_detector = std::make_shared<br2_tracking::ObjectDetector>();
   auto node_head_controller = std::make_shared<br2_tracking::HeadController>();
-  auto node_comander = rclcpp::Node::make_shared("node_commander");
+  auto node_tracker = rclcpp::Node::make_shared("tracker");
 
-  auto command_pub = node_comander->create_publisher<geometry_msgs::msg::Pose2D>("/command", 100);
-  auto detection_sub = node_comander->create_subscription<vision_msgs::msg::Detection2D>(
+  auto command_pub = node_tracker->create_publisher<br2_tracking_msgs::msg::PanTiltCommand>(
+    "/command", 100);
+  auto detection_sub = node_tracker->create_subscription<vision_msgs::msg::Detection2D>(
     "/detection", rclcpp::SensorDataQoS(),
     [command_pub](vision_msgs::msg::Detection2D::SharedPtr msg) {
-      geometry_msgs::msg::Pose2D command;
-      command.x = (msg->bbox.center.x / msg->source_img.width) * 2.0 - 1.0;
-      command.y = (msg->bbox.center.y / msg->source_img.height) * 2.0 - 1.0;
+      br2_tracking_msgs::msg::PanTiltCommand command;
+      command.pan = (msg->bbox.center.x / msg->source_img.width) * 2.0 - 1.0;
+      command.tilt = (msg->bbox.center.y / msg->source_img.height) * 2.0 - 1.0;
       command_pub->publish(command);
     });
 
   rclcpp::executors::SingleThreadedExecutor executor;
   executor.add_node(node_detector);
-  executor.add_node(node_head_controller);
-  executor.add_node(node_comander);
+  executor.add_node(node_head_controller->get_node_base_interface());
+  executor.add_node(node_tracker);
+
+  node_head_controller->trigger_transition(lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE);
+
   executor.spin();
 
   rclcpp::shutdown();

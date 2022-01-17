@@ -74,30 +74,26 @@ ObjectDetector::image_callback(const sensor_msgs::msg::Image::ConstSharedPtr & m
   auto moment = cv::moments(filtered, true);
   cv::Rect bbx = cv::boundingRect(filtered);
 
-  vision_msgs::msg::Detection2D detection_msg;
+  auto m = cv::moments(filtered, true);
+  if (m.m00 < 0.000001) {return;}
+  int cx = m.m10 / m.m00;
+  int cy = m.m01 / m.m00;
 
+  vision_msgs::msg::Detection2D detection_msg;
   detection_msg.header = msg->header;
   detection_msg.bbox.size_x = bbx.width;
   detection_msg.bbox.size_y = bbx.height;
-
-  auto m = cv::moments(filtered, true);
-
-  if (m.m00 < 0.000001) {return;}
-
-  int cx = m.m10 / m.m00;
-  int cy = m.m01 / m.m00;
   detection_msg.bbox.center.x = cx;
   detection_msg.bbox.center.y = cy;
+  detection_msg.source_img = *cv_ptr->toImageMsg();
+  detection_pub_->publish(detection_msg);
 
   if (debug_) {
     cv::rectangle(cv_ptr->image, bbx, cv::Scalar(0, 0, 255), 3);
     cv::circle(cv_ptr->image, cv::Point(cx, cy), 3, cv::Scalar(255, 0, 0), 3);
-    cv::imshow("filtered", cv_ptr->image);
+    cv::imshow("cv_ptr->image", cv_ptr->image);
     cv::waitKey(1);
   }
-
-  detection_msg.source_img = *cv_ptr->toImageMsg();
-  detection_pub_->publish(detection_msg);
 }
 
 }  // namespace br2_tracking

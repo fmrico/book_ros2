@@ -99,9 +99,9 @@ AvoidanceNode::get_vff(const sensor_msgs::msg::LaserScan & scan)
 
   // If the obstacle is in the area that affects the robot, calculate repulsive vector
   if (distance_min < OBSTACLE_DISTANCE) {
-    float angle_min = scan.angle_min + scan.angle_increment * min_idx;
+    float angle = scan.angle_min + scan.angle_increment * min_idx;
 
-    float oposite_angle = angle_min + M_PI;
+    float oposite_angle = angle + M_PI;
     // The module of the vector is inverse to the distance to the obstacle
     float complementary_dist = OBSTACLE_DISTANCE - distance_min;
 

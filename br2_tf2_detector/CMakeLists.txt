@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(br2_tf2_detector)
-  
+
 set(CMAKE_CXX_STANDARD 17)
 
 # find dependencies

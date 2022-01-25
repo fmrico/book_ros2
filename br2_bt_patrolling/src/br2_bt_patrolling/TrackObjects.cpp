@@ -33,24 +33,6 @@ TrackObjects::TrackObjects(
   const BT::NodeConfiguration & conf)
 : br2_bt_patrolling::BtLifecycleCtrlNode(xml_tag_name, action_name, conf)
 {
-  std::cerr << "TrackObjects created" << std::endl;
-}
-
-
-BT::NodeStatus
-TrackObjects::on_success()
-{
-  std::cerr << ctrl_node_name_ << " activated succesful" << std::endl;
-
-  return BT::NodeStatus::SUCCESS;
-}
-
-BT::NodeStatus
-TrackObjects::on_failure()
-{
-  std::cerr << ctrl_node_name_ << " failed activating" << std::endl;
-
-  return BT::NodeStatus::SUCCESS;
 }
 
 }  // namespace br2_bt_patrolling

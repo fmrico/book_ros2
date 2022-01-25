@@ -1,4 +1,4 @@
-// Copyright (c) 2018 Intel Corporation
+// Copyright 2021 Intelligent Robotics Lab
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -101,6 +101,7 @@ public:
     setStatus(BT::NodeStatus::IDLE);
   }
 
+  // Get the state of the controlled node
   uint8_t get_state()
   {
     auto request = std::make_shared<lifecycle_msgs::srv::GetState::Request>();
@@ -118,6 +119,7 @@ public:
     return result.get()->current_state.id;
   }
 
+  // Get the state of the controlled node. Ot can fail, if not transition possible
   bool set_state(uint8_t state)
   {
     auto request = std::make_shared<lifecycle_msgs::srv::ChangeState::Request>();

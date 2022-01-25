@@ -35,9 +35,6 @@ public:
     const std::string & node_name,
     const BT::NodeConfiguration & conf);
 
-  BT::NodeStatus on_success() override;
-  BT::NodeStatus on_failure() override;
-
   static BT::PortsList providedPorts()
   {
     return BT::PortsList({});

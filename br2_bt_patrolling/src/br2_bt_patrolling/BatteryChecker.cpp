@@ -46,6 +46,12 @@ BatteryChecker::BatteryChecker(
 void
 BatteryChecker::vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg)
 {
+  last_twist_ = *msg;
+}
+
+void
+BatteryChecker::update_battery()
+{
   float battery_level;
   if (!config().blackboard->get("battery_level", battery_level)) {
     battery_level = 100.0f;
@@ -54,9 +60,9 @@ BatteryChecker::vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg)
   float dt = (node_->now() - last_reading_time_).seconds();
   last_reading_time_ = node_->now();
 
-  float vel = sqrt(msg->linear.x * msg->linear.x + msg->angular.z * msg->angular.z);
-
-  battery_level = std::max(0.0f, battery_level - (vel * dt * DECAY_LEVEL) - EPSILON * dt);
+  float vel = sqrt(last_twist_.linear.x * last_twist_.linear.x +
+    last_twist_.angular.z * last_twist_.angular.z);
+  battery_level = std::max(0.0f, battery_level -(vel * dt * DECAY_LEVEL) - EPSILON * dt);
 
   config().blackboard->set("battery_level", battery_level);
 }
@@ -64,10 +70,10 @@ BatteryChecker::vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg)
 BT::NodeStatus
 BatteryChecker::tick()
 {
+  update_battery();
+
   float battery_level;
-  if (!config().blackboard->get("battery_level", battery_level)) {
-    battery_level = 100.0f;
-  }
+  config().blackboard->get("battery_level", battery_level);
 
   std::cout << battery_level << std::endl;
 

@@ -84,7 +84,7 @@ TEST(bt_action, turn_btn)
   bool finish = false;
   while (!finish && rclcpp::ok()) {
     finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
-    rclcpp::spin_some(node_sink->get_node_base_interface());
+    rclcpp::spin_some(node_sink);
     rate.sleep();
   }
 
@@ -107,7 +107,7 @@ TEST(bt_action, back_btn)
 
   factory.registerFromPlugin(loader.getOSName("br2_back_bt_node"));
 
-  std::string xml_bt =
+  std::string xml_bt =gte_node
     R"(
     <root main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
@@ -123,7 +123,7 @@ TEST(bt_action, back_btn)
   bool finish = false;
   while (!finish && rclcpp::ok()) {
     finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
-    rclcpp::spin_some(node_sink->get_node_base_interface());
+    rclcpp::spin_some(node_sink);
     rate.sleep();
   }
 
@@ -159,12 +159,11 @@ TEST(bt_action, forward_btn)
   BT::Tree tree = factory.createTreeFromText(xml_bt, blackboard);
 
   rclcpp::Rate rate(10);
-
-  BT::NodeStatus current_status = BT::NodeStatus::FAILURE;
+  auto current_status = BT::NodeStatus::FAILURE;
   int counter = 0;
   while (counter++ < 30 && rclcpp::ok()) {
     current_status = tree.rootNode()->executeTick();
-    rclcpp::spin_some(node_sink->get_node_base_interface());
+    rclcpp::spin_some(node_sink);
     rate.sleep();
   }
 

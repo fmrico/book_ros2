@@ -49,8 +49,11 @@ public:
   const float MIN_LEVEL = 10.0;
 
 private:
+  void update_battery();
+
   rclcpp::Node::SharedPtr node_;
   rclcpp::Time last_reading_time_;
+  geometry_msgs::msg::Twist last_twist_;
   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr vel_sub_;
 };
 

@@ -65,7 +65,6 @@ GetWaypoint::GetWaypoint(
 void
 GetWaypoint::halt()
 {
-  std::cout << "GetWaypoint halt" << std::endl;
 }
 
 BT::NodeStatus

@@ -48,7 +48,7 @@ Move::on_tick()
 BT::NodeStatus
 Move::on_success()
 {
-  std::cout << "Navigation succesful " << std::endl;
+  RCLCPP_INFO(node_->get_logger(), "navigation Suceeded");
 
   return BT::NodeStatus::SUCCESS;
 }

@@ -36,17 +36,19 @@ int main(int argc, char * argv[])
 
   factory.registerFromPlugin(loader.getOSName("br2_forward_bt_node"));
 
-  std::string pkgpath = ament_index_cpp::get_package_share_directory("br2_bt_bumpgo");
-  std::string xml_file = pkgpath + "/behavior_tree_xml/forward.xml";
+  std::string xml_bt =
+    R"(
+    <root main_tree_to_execute = "MainTree" >
+      <BehaviorTree ID="MainTree">
+          <Forward />
+      </BehaviorTree>
+    </root>)";
 
   auto blackboard = BT::Blackboard::create();
   blackboard->set("node", node);
-  BT::Tree tree = factory.createTreeFromFile(xml_file, blackboard);
-
-  auto publisher_zmq = std::make_shared<BT::PublisherZMQ>(tree, 10, 1666, 1667);
+  BT::Tree tree = factory.createTreeFromText(xml_bt, blackboard);
 
   rclcpp::Rate rate(10);
-
   bool finish = false;
   while (!finish && rclcpp::ok()) {
     finish = tree.rootNode()->executeTick() != BT::NodeStatus::RUNNING;

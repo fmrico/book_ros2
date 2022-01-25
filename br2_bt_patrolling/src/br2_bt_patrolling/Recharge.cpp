@@ -33,7 +33,6 @@ Recharge::Recharge(
 void
 Recharge::halt()
 {
-  std::cout << "Recharge halt" << std::endl;
 }
 
 BT::NodeStatus

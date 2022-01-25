@@ -1,5 +1,0 @@
-<root main_tree_to_execute="BehaviorTree">
-    <BehaviorTree ID="BehaviorTree">
-        <Forward/>
-    </BehaviorTree>
-</root>

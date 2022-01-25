@@ -36,7 +36,7 @@ def generate_launch_description():
 
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
-        default_value=os.path.join(launch_rmw_dir, 'params', 'kobuki_nav_params.yaml'),
+        default_value=os.path.join(launch_rmw_dir, 'params', 'tiago_nav_params.yaml'),
         description='Full path to the ROS2 parameters file to use for all launched nodes')
 
     declare_slam_cmd = DeclareLaunchArgument(
@@ -87,8 +87,6 @@ def generate_launch_description():
 
     ld = LaunchDescription()
 
-    # ld.add_action(kobuki_cmd)
- 
     ld.add_action(declare_params_file_cmd)
     ld.add_action(declare_slam_cmd)
     ld.add_action(declare_map_yaml_cmd)

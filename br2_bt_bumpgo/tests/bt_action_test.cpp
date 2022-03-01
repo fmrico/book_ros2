@@ -107,7 +107,7 @@ TEST(bt_action, back_btn)
 
   factory.registerFromPlugin(loader.getOSName("br2_back_bt_node"));
 
-  std::string xml_bt =gte_node
+  std::string xml_bt =
     R"(
     <root main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">

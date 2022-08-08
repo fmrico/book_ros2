@@ -1,4 +1,4 @@
-name: main
+name: foxy-devel
 
 on:
   pull_request:

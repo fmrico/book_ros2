@@ -1,4 +1,4 @@
-name: main
+name: humble-devel
 
 on:
   pull_request:

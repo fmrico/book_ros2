@@ -3,10 +3,10 @@ name: humble-devel
 on:
   pull_request:
     branches:
-      - main
+      - humble-devel
   push:
     branches:
-      - main
+      - humble-devel
 
 jobs:
   build-and-test:

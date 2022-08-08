@@ -83,9 +83,8 @@ ObjectDetector::image_callback(const sensor_msgs::msg::Image::ConstSharedPtr & m
   detection_msg.header = msg->header;
   detection_msg.bbox.size_x = bbx.width;
   detection_msg.bbox.size_y = bbx.height;
-  detection_msg.bbox.center.x = cx;
-  detection_msg.bbox.center.y = cy;
-  detection_msg.source_img = *cv_ptr->toImageMsg();
+  detection_msg.bbox.center.position.x = cx;
+  detection_msg.bbox.center.position.y = cy;
   detection_pub_->publish(detection_msg);
 
   if (debug_) {

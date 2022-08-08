@@ -136,7 +136,7 @@ public:
       } else {
         if (state != ctrl_node_state_) {
           RCLCPP_ERROR(
-            node_->get_logger(), "Transition not possible %zu -> %zu", ctrl_node_state_, state);
+            node_->get_logger(), "Transition not possible %u -> %u", ctrl_node_state_, state);
           return false;
         } else {
           return true;
@@ -155,10 +155,10 @@ public:
 
     if (!result.get()->success) {
       RCLCPP_ERROR(
-        node_->get_logger(), "Failed to set node state %zu -> %zu", ctrl_node_state_, state);
+        node_->get_logger(), "Failed to set node state %u -> %u", ctrl_node_state_, state);
       return false;
     } else {
-      RCLCPP_INFO(node_->get_logger(), "Transition success  %zu -> %zu", ctrl_node_state_, state);
+      RCLCPP_INFO(node_->get_logger(), "Transition success  %u -> %u", ctrl_node_state_, state);
     }
 
     ctrl_node_state_ = state;

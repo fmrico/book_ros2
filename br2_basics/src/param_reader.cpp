@@ -22,9 +22,9 @@ class LocalizationNode : public rclcpp::Node
 public:
   LocalizationNode() : Node("localization_node")
   {
-    declare_parameter<int>("number_particles", 200);
-    declare_parameter<std::vector<std::string>>("topics", {});
-    declare_parameter<std::vector<std::string>>("topic_types", {});
+    declare_parameter("number_particles", 200);
+    declare_parameter("topics", std::vector<std::string>());
+    declare_parameter("topic_types", std::vector<std::string>());
 
     get_parameter("number_particles", num_particles_);
     RCLCPP_INFO_STREAM(get_logger(), "Number of particles: " << num_particles_);

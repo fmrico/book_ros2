@@ -2,10 +2,10 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>br2_fsm_bumpgo_py</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <version>0.2.0</version>
+  <description>Bump and Go behavior based on Finite State Machines (Python)</description>
   <maintainer email="fmrico@gmail.com">fmrico</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache License, Version 2.0</license>
 
   <depend>rclcpy</depend>
   <depend>sensor_msgs</depend>

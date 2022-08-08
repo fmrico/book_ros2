@@ -5,7 +5,7 @@
   <version>0.1.0</version>
   <description>Bump and Go behavior based on Finite State Machines</description>
   <maintainer email="fmrico@gmail.com">fmrico</maintainer>
-  <license>Apache 2.0</license>
+  <license>Apache License, Version 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

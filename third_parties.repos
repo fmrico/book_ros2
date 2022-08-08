@@ -1,16 +1,4 @@
 repositories:
-  ThirdParty/gazebo_ros2_control:
-    type: git
-    url: https://github.com/pal-robotics-forks/gazebo_ros2_control.git
-    version: add-imu-sensor-parse
-  ThirdParty/ros2_control:
-    type: git
-    url: https://github.com/ros-controls/ros2_control.git
-    version: 0.7.1
-  ThirdParty/ros2_controllers:
-    type: git
-    url: https://github.com/ros-controls/ros2_controllers.git
-    version: 0.4.0
   ThirdParty/urdf_test:
     type: git
     url: https://github.com/pal-robotics/urdf_test
@@ -34,7 +22,7 @@ repositories:
   ThirdParty/twist_mux:
     type: git
     url: https://github.com/ros-teleop/twist_mux.git
-    version: foxy-devel
+    version: rolling
   ThirdParty/tiago_robot:
     type: git
     url: https://github.com/fmrico/tiago_robot.git

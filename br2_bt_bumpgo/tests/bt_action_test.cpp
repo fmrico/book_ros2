@@ -28,7 +28,6 @@
 #include "sensor_msgs/msg/laser_scan.hpp"
 
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_action/rclcpp_action.hpp"
 
 #include "gtest/gtest.h"
 

@@ -2,17 +2,19 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>br2_tf2_detector</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <version>0.2.0</version>
+  <description>Detector using TF2</description>
   <maintainer email="fmrico@gmail.com">fmrico</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache License, Version 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
   <depend>tf2_ros</depend>
   <depend>geometry_msgs</depend>
+  <depend>tf2_geometry_msgs</depend>
   <depend>sensor_msgs</depend>
+  <depend>visualization_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

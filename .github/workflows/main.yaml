@@ -16,8 +16,6 @@ jobs:
         os: [ubuntu-22.04]
       fail-fast: false
     steps:
-      - name: Install popf deps
-        run: sudo apt-get install libfl-dev
       - name: Setup ROS 2
         uses: ros-tooling/setup-ros@0.3.3
         with:

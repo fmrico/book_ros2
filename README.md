@@ -2,6 +2,10 @@
 
 [![GitHub Action
 Status](https://github.com/fmrico/book_ros2/workflows/main/badge.svg)](https://github.com/fmrico/book_ros2)
+[![GitHub Action
+Status](https://github.com/fmrico/book_ros2/workflows/humble-devel/badge.svg)](https://github.com/fmrico/book_ros2)
+[![GitHub Action
+Status](https://github.com/fmrico/book_ros2/workflows/foxy-devel/badge.svg)](https://github.com/fmrico/book_ros2)
 
 This repository contains the source code shown and analyzed in book _A Concise Introduction to Robot Programming with ROS2_, as well as complementary teaching material that will be added.
 

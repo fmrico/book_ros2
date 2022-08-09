@@ -13,12 +13,11 @@
 # limitations under the License.
 
 
-import rclpy
-
 from geometry_msgs.msg import Twist
 
-from rclpy.node import Node
+import rclpy
 from rclpy.duration import Duration
+from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from rclpy.time import Time
 

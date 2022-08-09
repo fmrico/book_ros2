@@ -67,7 +67,7 @@ def generate_launch_description():
                               'params_file': params_file}.items()),
 
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 
+            PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch',
                                                        'localization_launch.py')),
             condition=IfCondition(PythonExpression(['not ', slam])),
             launch_arguments={'map': map_yaml_file,
@@ -92,7 +92,7 @@ def generate_launch_description():
     ld.add_action(declare_map_yaml_cmd)
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_autostart_cmd)
- 
+
     ld.add_action(nav2_bringup_cmd_group)
 
     return ld

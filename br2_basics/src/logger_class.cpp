@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 
 using namespace std::chrono_literals;
 
 class LoggerNode : public rclcpp::Node
 {
 public:
-  LoggerNode() : Node("logger_node")
+  LoggerNode()
+  : Node("logger_node")
   {
     counter_ = 0;
     timer_ = create_wall_timer(
@@ -36,13 +37,14 @@ private:
   int counter_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<LoggerNode>();
 
-  rclcpp::spin(node); 
+  rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }

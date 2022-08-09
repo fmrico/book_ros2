@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/int32.hpp"
 
 using std::placeholders::_1;
@@ -20,9 +20,11 @@ using std::placeholders::_1;
 class SubscriberNode : public rclcpp::Node
 {
 public:
-  SubscriberNode() : Node("subscriber_node")
+  SubscriberNode()
+  : Node("subscriber_node")
   {
-    subscriber_ = create_subscription<std_msgs::msg::Int32>("int_topic", 10,
+    subscriber_ = create_subscription<std_msgs::msg::Int32>(
+      "int_topic", 10,
       std::bind(&SubscriberNode::callback, this, _1));
   }
 
@@ -35,13 +37,14 @@ private:
   rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr subscriber_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<SubscriberNode>();
 
-  rclcpp::spin(node); 
+  rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }

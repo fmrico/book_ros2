@@ -12,41 +12,41 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BR2_BT_BUMPGO__BUMPGONODE_HPP_
-#define BR2_BT_BUMPGO__BUMPGONODE_HPP_ 
+#ifndef BR2_FSM_BUMPGO_CPP__BUMPGONODE_HPP_
+#define BR2_FSM_BUMPGO_CPP__BUMPGONODE_HPP_
 
-#include "sensor_msgs/msg/laser_scan.hpp" 
-#include "geometry_msgs/msg/twist.hpp" 
+#include "sensor_msgs/msg/laser_scan.hpp"
+#include "geometry_msgs/msg/twist.hpp"
 
-#include "rclcpp/rclcpp.hpp" 
+#include "rclcpp/rclcpp.hpp"
 
-namespace br2_fsm_bumpgo_cpp 
+namespace br2_fsm_bumpgo_cpp
 {
 
-using namespace std::chrono_literals;
+using namespace std::chrono_literals;  // NOLINT
 
-class BumpGoNode : public rclcpp::Node 
-{ 
-public: 
-  BumpGoNode(); 
+class BumpGoNode : public rclcpp::Node
+{
+public:
+  BumpGoNode();
 
-private: 
-  void scan_callback(sensor_msgs::msg::LaserScan::UniquePtr msg); 
-  void control_cycle(); 
+private:
+  void scan_callback(sensor_msgs::msg::LaserScan::UniquePtr msg);
+  void control_cycle();
 
-  static const int FORWARD = 0; 
+  static const int FORWARD = 0;
   static const int BACK = 1;
-  static const int TURN = 2; 
-  static const int STOP = 3; 
-  int state_; 
-  rclcpp::Time state_ts_; 
+  static const int TURN = 2;
+  static const int STOP = 3;
+  int state_;
+  rclcpp::Time state_ts_;
 
-  void go_state(int new_state); 
-  bool check_forward_2_back(); 
-  bool check_forward_2_stop(); 
-  bool check_back_2_turn(); 
-  bool check_turn_2_forward(); 
-  bool check_stop_2_forward(); 
+  void go_state(int new_state);
+  bool check_forward_2_back();
+  bool check_forward_2_stop();
+  bool check_back_2_turn();
+  bool check_turn_2_forward();
+  bool check_stop_2_forward();
 
   const rclcpp::Duration TURNING_TIME {2s};
   const rclcpp::Duration BACKING_TIME {2s};
@@ -56,13 +56,13 @@ private:
   static constexpr float SPEED_ANGULAR = 0.3f;
   static constexpr float OBSTACLE_DISTANCE = 1.0f;
 
-  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_; 
-  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_pub_; 
-  rclcpp::TimerBase::SharedPtr timer_; 
+  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
+  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_pub_;
+  rclcpp::TimerBase::SharedPtr timer_;
 
-  sensor_msgs::msg::LaserScan::UniquePtr last_scan_; 
-}; 
+  sensor_msgs::msg::LaserScan::UniquePtr last_scan_;
+};
 
-} // namespace br2_fsm_bumpgo_cpp 
+}  // namespace br2_fsm_bumpgo_cpp
 
-#endif // BR2_BT_BUMPGO__BUMPGONODE_HPP_ 
+#endif  // BR2_FSM_BUMPGO_CPP__BUMPGONODE_HPP_

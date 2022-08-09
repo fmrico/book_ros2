@@ -12,15 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/int32.hpp"
 
 using namespace std::chrono_literals;
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
 
-  auto node = rclcpp::Node::make_shared("publisher_node");  
+  auto node = rclcpp::Node::make_shared("publisher_node");
   auto publisher = node->create_publisher<std_msgs::msg::Int32>(
     "int_topic", 10);
 
@@ -36,6 +37,6 @@ int main(int argc, char * argv[]) {
     loop_rate.sleep();
   }
 
-  rclcpp::shutdown();  
-  return 0;  
-} 
+  rclcpp::shutdown();
+  return 0;
+}

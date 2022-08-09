@@ -15,12 +15,12 @@
 
 import rclpy
 from rclpy.node import Node
-from rclpy.qos import qos_profile_sensor_data
 
 from geometry_msgs.msg import Twist
 
-from rclpy.time import Time
+from rclpy.qos import qos_profile_sensor_data
 from rclpy.duration import Duration
+from rclpy.time import Time
 
 from sensor_msgs.msg import LaserScan
 

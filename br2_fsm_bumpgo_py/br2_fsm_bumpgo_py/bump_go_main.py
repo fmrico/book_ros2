@@ -13,16 +13,14 @@
 # limitations under the License.
 
 
-from rclpy.duration import Duration
-
-from geometry_msgs.msg import Twist
-from sensor_msgs.msg import LaserScan
-
 import rclpy
-
+from rclpy.duration import Duration
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from rclpy.time import Time
+
+from geometry_msgs.msg import Twist
+from sensor_msgs.msg import LaserScan
 
 
 class BumpGoNode(Node):

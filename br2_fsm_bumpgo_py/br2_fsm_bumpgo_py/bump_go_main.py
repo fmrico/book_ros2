@@ -13,12 +13,13 @@
 # limitations under the License.
 
 
-import rclpy
+from rclpy.duration import Duration
 
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
 
-from rclpy.duration import Duration
+import rclpy
+
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from rclpy.time import Time

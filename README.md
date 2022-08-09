@@ -3,7 +3,7 @@
 [![GitHub Action
 Status](https://github.com/fmrico/book_ros2/workflows/main/badge.svg)](https://github.com/fmrico/book_ros2)
 [![GitHub Action
-Status](https://github.com/fmrico/book_ros2/workflows/humble-devel/badge.svg)](https://github.com/fmrico/book_ros2)
+Status](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml/badge.svg?branch=humble-devel)](https://github.com/fmrico/book_ros2)
 [![GitHub Action
 Status](https://github.com/fmrico/book_ros2/workflows/foxy-devel/badge.svg)](https://github.com/fmrico/book_ros2)
 

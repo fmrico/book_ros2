@@ -25,7 +25,7 @@ jobs:
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.2.5
         with:
-          package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_vff_avoidance
+          package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
           target-ros2-distro: humble
           vcs-repo-file-url: /tmp/all.repos
           colcon-defaults: |

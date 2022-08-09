@@ -1,12 +1,12 @@
-name: main
+name: humble-devel
 
 on:
   pull_request:
     branches:
-      - main
+      - humble-devel
   push:
     branches:
-      - main
+      - humble-devel
 
 jobs:
   build-and-test:
@@ -21,7 +21,7 @@ jobs:
         with:
           required-ros-distributions: humble
       - name: Create custom repos
-        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/main/third_parties.repos
+        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/third_parties.repos
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.2.5
         with:

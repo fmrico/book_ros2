@@ -12,15 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
 #include <vector>
 #include <string>
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 
 class LocalizationNode : public rclcpp::Node
 {
 public:
-  LocalizationNode() : Node("localization_node")
+  LocalizationNode()
+  : Node("localization_node")
   {
     declare_parameter<int>("number_particles", 200);
     declare_parameter<std::vector<std::string>>("topics", {});
@@ -33,7 +35,8 @@ public:
     get_parameter("topic_types", topic_types_);
 
     if (topics_.size() != topic_types_.size()) {
-      RCLCPP_ERROR(get_logger(), "Number of topics (%zu) != number of types (%zu)",
+      RCLCPP_ERROR(
+        get_logger(), "Number of topics (%zu) != number of types (%zu)",
         topics_.size(), topic_types_.size());
     } else {
       RCLCPP_INFO_STREAM(get_logger(), "Number of topics: " << topics_.size());
@@ -49,13 +52,14 @@ private:
   std::vector<std::string> topic_types_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<LocalizationNode>();
 
   rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }

@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include <memory>
+
+#include "rclcpp/rclcpp.hpp"
 
 #include "std_msgs/msg/int32.hpp"
 
@@ -22,7 +24,8 @@ using std::placeholders::_1;
 class PublisherNode : public rclcpp::Node
 {
 public:
-  PublisherNode() : Node("publisher_node")
+  PublisherNode()
+  : Node("publisher_node")
   {
     publisher_ = create_publisher<std_msgs::msg::Int32>("int_topic", 10);
     timer_ = create_wall_timer(
@@ -41,13 +44,14 @@ private:
   std_msgs::msg::Int32 message_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<PublisherNode>();
 
   rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }

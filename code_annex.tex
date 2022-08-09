@@ -136,7 +136,7 @@ def generate_launch_description():
     parameters=[param_file],
     output='screen'
   )
-  
+
   ld = LaunchDescription()
   ld.add_action(param_reader_cmd)
 
@@ -157,7 +157,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
-  
+
   return LaunchDescription([
     Node(
       package='basics',
@@ -197,7 +197,7 @@ def generate_launch_description():
     executable='subscriber_class',
     output='screen'
   )
-  
+
   ld = LaunchDescription()
   ld.add_action(pub_cmd)
   ld.add_action(sub_cmd)
@@ -223,7 +223,7 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
-  
+
   return LaunchDescription([
     IncludeLaunchDescription(
       PythonLaunchDescriptionSource(os.path.join(
@@ -259,7 +259,7 @@ def generate_launch_description():
     }],
     output='screen'
   )
-  
+
   ld = LaunchDescription()
   ld.add_action(param_reader_cmd)
 
@@ -309,10 +309,10 @@ def generate_launch_description():
     fontsize=\scriptsize
   ]{Yaml}
 localization_node:
-  ros__parameters: 
-    number_particles: 300 
-    topics: [scan, image] 
-    topic_types: [sensor_msgs/msg/LaserScan, sensor_msgs/msg/Image] 
+  ros__parameters:
+    number_particles: 300
+    topics: [scan, image]
+    topic_types: [sensor_msgs/msg/LaserScan, sensor_msgs/msg/Image]
     \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -339,7 +339,7 @@ localization_node:
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 
 using namespace std::chrono_literals;
 
@@ -363,15 +363,15 @@ private:
   int counter_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<LoggerNode>();
 
-  rclcpp::spin(node); 
+  rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }    \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -398,7 +398,7 @@ int main(int argc, char * argv[]) {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/int32.hpp"
 
 using std::placeholders::_1;
@@ -421,15 +421,15 @@ private:
   rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr subscriber_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<SubscriberNode>();
 
-  rclcpp::spin(node); 
+  rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }    \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -456,15 +456,15 @@ int main(int argc, char * argv[]) {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/int32.hpp"
 
 using namespace std::chrono_literals;
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
 
-  auto node = rclcpp::Node::make_shared("publisher_node");  
+  auto node = rclcpp::Node::make_shared("publisher_node");
   auto publisher = node->create_publisher<std_msgs::msg::Int32>(
     "int_topic", 10);
 
@@ -480,8 +480,8 @@ int main(int argc, char * argv[]) {
     loop_rate.sleep();
   }
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }     \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -511,7 +511,7 @@ int main(int argc, char * argv[]) {
 #include <vector>
 #include <string>
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 
 class LocalizationNode : public rclcpp::Node
 {
@@ -545,15 +545,15 @@ private:
   std::vector<std::string> topic_types_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<LocalizationNode>();
 
   rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }
     \end{minted}
     \end{tcolorbox}
@@ -581,7 +581,7 @@ int main(int argc, char * argv[]) {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 
 #include "std_msgs/msg/int32.hpp"
 
@@ -628,8 +628,8 @@ private:
   rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr subscriber_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
 
   auto node_pub = std::make_shared<PublisherNode>();
   auto node_sub = std::make_shared<SubscriberNode>();
@@ -643,8 +643,8 @@ int main(int argc, char * argv[]) {
 
   executor.spin();
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }    \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -671,7 +671,7 @@ int main(int argc, char * argv[]) {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 
 #include "std_msgs/msg/int32.hpp"
 
@@ -700,15 +700,15 @@ private:
   std_msgs::msg::Int32 message_;
 };
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
 
   auto node = std::make_shared<PublisherNode>();
 
   rclcpp::spin(node);
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }    \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -735,14 +735,14 @@ int main(int argc, char * argv[]) {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"  
+#include "rclcpp/rclcpp.hpp"
 
 using namespace std::chrono_literals;
 
-int main(int argc, char * argv[]) { 
-  rclcpp::init(argc, argv);  
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
 
-  auto node = rclcpp::Node::make_shared("logger_node");  
+  auto node = rclcpp::Node::make_shared("logger_node");
 
   rclcpp::Rate loop_rate(500ms);
   int counter = 0;
@@ -753,8 +753,8 @@ int main(int argc, char * argv[]) {
     loop_rate.sleep();
   }
 
-  rclcpp::shutdown();  
-  return 0;  
+  rclcpp::shutdown();
+  return 0;
 }     \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -956,40 +956,40 @@ def generate_launch_description():
 // limitations under the License.
 
 #ifndef BR2_BT_BUMPGO__BUMPGONODE_HPP_
-#define BR2_BT_BUMPGO__BUMPGONODE_HPP_ 
+#define BR2_BT_BUMPGO__BUMPGONODE_HPP_
 
-#include "sensor_msgs/msg/laser_scan.hpp" 
-#include "geometry_msgs/msg/twist.hpp" 
+#include "sensor_msgs/msg/laser_scan.hpp"
+#include "geometry_msgs/msg/twist.hpp"
 
-#include "rclcpp/rclcpp.hpp" 
+#include "rclcpp/rclcpp.hpp"
 
-namespace br2_fsm_bumpgo_cpp 
+namespace br2_fsm_bumpgo_cpp
 {
 
 using namespace std::chrono_literals;
 
-class BumpGoNode : public rclcpp::Node 
-{ 
-public: 
-  BumpGoNode(); 
+class BumpGoNode : public rclcpp::Node
+{
+public:
+  BumpGoNode();
 
-private: 
-  void scan_callback(sensor_msgs::msg::LaserScan::UniquePtr msg); 
-  void control_cycle(); 
+private:
+  void scan_callback(sensor_msgs::msg::LaserScan::UniquePtr msg);
+  void control_cycle();
 
-  static const int FORWARD = 0; 
+  static const int FORWARD = 0;
   static const int BACK = 1;
-  static const int TURN = 2; 
-  static const int STOP = 3; 
-  int state_; 
-  rclcpp::Time state_ts_; 
+  static const int TURN = 2;
+  static const int STOP = 3;
+  int state_;
+  rclcpp::Time state_ts_;
 
-  void go_state(int new_state); 
-  bool check_forward_2_back(); 
-  bool check_forward_2_stop(); 
-  bool check_back_2_turn(); 
-  bool check_turn_2_forward(); 
-  bool check_stop_2_forward(); 
+  void go_state(int new_state);
+  bool check_forward_2_back();
+  bool check_forward_2_stop();
+  bool check_back_2_turn();
+  bool check_turn_2_forward();
+  bool check_stop_2_forward();
 
   const rclcpp::Duration TURNING_TIME {2s};
   const rclcpp::Duration BACKING_TIME {2s};
@@ -999,16 +999,16 @@ private:
   static constexpr float SPEED_ANGULAR = 0.3f;
   static constexpr float OBSTACLE_DISTANCE = 1.0f;
 
-  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_; 
-  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_pub_; 
-  rclcpp::TimerBase::SharedPtr timer_; 
+  rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
+  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr vel_pub_;
+  rclcpp::TimerBase::SharedPtr timer_;
 
-  sensor_msgs::msg::LaserScan::UniquePtr last_scan_; 
-}; 
+  sensor_msgs::msg::LaserScan::UniquePtr last_scan_;
+};
 
-} // namespace br2_fsm_bumpgo_cpp 
+} // namespace br2_fsm_bumpgo_cpp
 
-#endif // BR2_BT_BUMPGO__BUMPGONODE_HPP_ 
+#endif // BR2_BT_BUMPGO__BUMPGONODE_HPP_
     \end{minted}
     \end{tcolorbox}
   \normalsize
@@ -1077,128 +1077,128 @@ int main(int argc, char * argv[])
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <utility> 
-#include "br2_fsm_bumpgo_cpp/BumpGoNode.hpp" 
+#include <utility>
+#include "br2_fsm_bumpgo_cpp/BumpGoNode.hpp"
 
-#include "sensor_msgs/msg/laser_scan.hpp" 
-#include "geometry_msgs/msg/twist.hpp" 
+#include "sensor_msgs/msg/laser_scan.hpp"
+#include "geometry_msgs/msg/twist.hpp"
 
-#include "rclcpp/rclcpp.hpp" 
+#include "rclcpp/rclcpp.hpp"
 
-namespace br2_fsm_bumpgo_cpp 
-{ 
-
-using namespace std::chrono_literals; 
-using std::placeholders::_1; 
-
-BumpGoNode::BumpGoNode() 
-: Node("bump_go"), 
-  state_(FORWARD) 
+namespace br2_fsm_bumpgo_cpp
 {
-  scan_sub_ = create_subscription<sensor_msgs::msg::LaserScan>( 
-    "input_scan", rclcpp::SensorDataQoS(), 
-    std::bind(&BumpGoNode::scan_callback, this, _1)); 
 
-  vel_pub_ = create_publisher<geometry_msgs::msg::Twist>("output_vel", 10); 
-  timer_ = create_wall_timer(50ms, std::bind(&BumpGoNode::control_cycle, this)); 
+using namespace std::chrono_literals;
+using std::placeholders::_1;
 
-  state_ts_ = now(); 
-} 
+BumpGoNode::BumpGoNode()
+: Node("bump_go"),
+  state_(FORWARD)
+{
+  scan_sub_ = create_subscription<sensor_msgs::msg::LaserScan>(
+    "input_scan", rclcpp::SensorDataQoS(),
+    std::bind(&BumpGoNode::scan_callback, this, _1));
 
-void 
-BumpGoNode::scan_callback(sensor_msgs::msg::LaserScan::UniquePtr msg) 
-{ 
-  last_scan_ = std::move(msg); 
+  vel_pub_ = create_publisher<geometry_msgs::msg::Twist>("output_vel", 10);
+  timer_ = create_wall_timer(50ms, std::bind(&BumpGoNode::control_cycle, this));
+
+  state_ts_ = now();
 }
 
 void
-BumpGoNode::control_cycle() 
-{ 
-  // Do nothing until the first sensor read 
+BumpGoNode::scan_callback(sensor_msgs::msg::LaserScan::UniquePtr msg)
+{
+  last_scan_ = std::move(msg);
+}
+
+void
+BumpGoNode::control_cycle()
+{
+  // Do nothing until the first sensor read
   if (last_scan_ == nullptr)
-    return; 
+    return;
 
-  geometry_msgs::msg::Twist out_vel; 
+  geometry_msgs::msg::Twist out_vel;
 
-  switch (state_) { 
-    case FORWARD: 
-      out_vel.linear.x = SPEED_LINEAR; 
+  switch (state_) {
+    case FORWARD:
+      out_vel.linear.x = SPEED_LINEAR;
 
       if (check_forward_2_stop())
-        go_state(STOP); 
+        go_state(STOP);
       if (check_forward_2_back())
         go_state(BACK);
 
-      break; 
-    case BACK: 
-      out_vel.linear.x = -SPEED_LINEAR; 
+      break;
+    case BACK:
+      out_vel.linear.x = -SPEED_LINEAR;
 
       if (check_back_2_turn())
-        go_state(TURN); 
+        go_state(TURN);
 
-      break; 
-    case TURN: 
-      out_vel.angular.z = SPEED_ANGULAR; 
+      break;
+    case TURN:
+      out_vel.angular.z = SPEED_ANGULAR;
 
       if (check_turn_2_forward())
-        go_state(FORWARD); 
+        go_state(FORWARD);
 
-      break; 
-    case STOP: 
-      if (check_stop_2_forward()) 
-        go_state(FORWARD); 
-      break; 
+      break;
+    case STOP:
+      if (check_stop_2_forward())
+        go_state(FORWARD);
+      break;
   }
 
-  vel_pub_->publish(out_vel); 
-} 
+  vel_pub_->publish(out_vel);
+}
 
 void
-BumpGoNode::go_state(int new_state) 
-{ 
-  state_ = new_state; 
-  state_ts_ = now(); 
-} 
+BumpGoNode::go_state(int new_state)
+{
+  state_ = new_state;
+  state_ts_ = now();
+}
 
-bool   
-BumpGoNode::check_forward_2_back()   
-{ 
-  // going forward when deteting an obstacle 
-  // at 0.5 meters with the front laser read 
-  size_t pos = last_scan_->ranges.size() / 2; 
-  return last_scan_->ranges[pos] < OBSTACLE_DISTANCE; 
-} 
-    
 bool 
-BumpGoNode::check_forward_2_stop() 
-{ 
+BumpGoNode::check_forward_2_back() 
+{
+  // going forward when deteting an obstacle
+  // at 0.5 meters with the front laser read
+  size_t pos = last_scan_->ranges.size() / 2;
+  return last_scan_->ranges[pos] < OBSTACLE_DISTANCE;
+}
+  
+bool
+BumpGoNode::check_forward_2_stop()
+{
   // Stop if no sensor readings for 1 second
   auto elapsed = now() - rclcpp::Time(last_scan_->header.stamp);
-  return elapsed > SCAN_TIMEOUT; 
-} 
+  return elapsed > SCAN_TIMEOUT;
+}
 
-bool   
-BumpGoNode::check_stop_2_forward() 
-{ 
-  // Going forward if sensor readings are available 
+bool 
+BumpGoNode::check_stop_2_forward()
+{
+  // Going forward if sensor readings are available
   // again
   auto elapsed = now() - rclcpp::Time(last_scan_->header.stamp);
-  return elapsed < SCAN_TIMEOUT; 
-} 
+  return elapsed < SCAN_TIMEOUT;
+}
 
-bool 
-BumpGoNode::check_back_2_turn() 
-{ 
+bool
+BumpGoNode::check_back_2_turn()
+{
   // Going back for 2 seconds
-  return (now() - state_ts_) > BACKING_TIME; 
-} 
-  
-bool 
-BumpGoNode::check_turn_2_forward() 
-{ 
-  // Turning for 2 seconds 
-  return (now() - state_ts_) > TURNING_TIME; 
-} 
+  return (now() - state_ts_) > BACKING_TIME;
+}
+
+bool
+BumpGoNode::check_turn_2_forward()
+{
+  // Turning for 2 seconds
+  return (now() - state_ts_) > TURNING_TIME;
+}
 
 } // namespace br2_fsm_bumpgo_cpp     \end{minted}
     \end{tcolorbox}
@@ -1463,24 +1463,24 @@ def test_pep257():
   ]{Python}
 import rclpy
 
-from rclpy.duration import Duration 
-from rclpy.node import Node 
-from rclpy.qos import qos_profile_sensor_data 
-from rclpy.time import Time 
+from rclpy.duration import Duration
+from rclpy.node import Node
+from rclpy.qos import qos_profile_sensor_data
+from rclpy.time import Time
 
-from geometry_msgs.msg import Twist 
-from sensor_msgs.msg import LaserScan 
+from geometry_msgs.msg import Twist
+from sensor_msgs.msg import LaserScan
 
 
-class BumpGoNode(Node): 
-    def __init__(self): 
-        super().__init__('bump_go') 
+class BumpGoNode(Node):
+    def __init__(self):
+        super().__init__('bump_go')
 
-        self.FORWARD = 0 
-        self.BACK = 1 
-        self.TURN = 2 
+        self.FORWARD = 0
+        self.BACK = 1
+        self.TURN = 2
         self.STOP = 3
-        self.state = self.FORWARD 
+        self.state = self.FORWARD
         self.state_ts = self.get_clock().now()
 
         self.TURNING_TIME = 2.0
@@ -1492,86 +1492,86 @@ class BumpGoNode(Node):
         self.OBSTACLE_DISTANCE = 1.0
 
         self.last_scan = None
- 
-        self.scan_sub = self.create_subscription( 
-            LaserScan, 
-            'input_scan', 
-            self.scan_callback, 
-            qos_profile_sensor_data) 
 
-        self.vel_pub = self.create_publisher(Twist, 'output_vel', 10) 
-        self.timer = self.create_timer(0.05, self.control_cycle) 
- 
-    def scan_callback(self, msg): 
-        self.last_scan = msg 
- 
-    def control_cycle(self): 
-        if self.last_scan is None: 
+        self.scan_sub = self.create_subscription(
+            LaserScan,
+            'input_scan',
+            self.scan_callback,
+            qos_profile_sensor_data)
+
+        self.vel_pub = self.create_publisher(Twist, 'output_vel', 10)
+        self.timer = self.create_timer(0.05, self.control_cycle)
+
+    def scan_callback(self, msg):
+        self.last_scan = msg
+
+    def control_cycle(self):
+        if self.last_scan is None:
             return
 
         out_vel = Twist()
 
-        if self.state == self.FORWARD: 
+        if self.state == self.FORWARD:
           out_vel.linear.x = self.SPEED_LINEAR
 
-          if self.check_forward_2_stop(): 
-            self.go_state(self.STOP) 
-          if self.check_forward_2_back(): 
+          if self.check_forward_2_stop():
+            self.go_state(self.STOP)
+          if self.check_forward_2_back():
             self.go_state(self.BACK)
 
-        elif self.state == self.BACK: 
+        elif self.state == self.BACK:
           out_vel.linear.x = -self.SPEED_LINEAR
 
-          if self.check_back_2_turn(): 
-            self.go_state(self.TURN) 
+          if self.check_back_2_turn():
+            self.go_state(self.TURN)
 
-        elif self.state == self.TURN: 
+        elif self.state == self.TURN:
           out_vel.angular.z = self.SPEED_ANGULAR
 
-          if self.check_turn_2_forward(): 
+          if self.check_turn_2_forward():
             self.go_state(self.FORWARD)
 
-        elif self.state == self.STOP: 
-          if self.check_stop_2_forward(): 
+        elif self.state == self.STOP:
+          if self.check_stop_2_forward():
             self.go_state(self.FORWARD)
 
-        self.vel_pub.publish(out_vel) 
+        self.vel_pub.publish(out_vel)
 
-    def go_state(self, new_state): 
-        self.state = new_state 
+    def go_state(self, new_state):
+        self.state = new_state
         self.state_ts = self.get_clock().now()
 
-    def check_forward_2_back(self): 
-        pos = round(len(self.last_scan.ranges) / 2) 
-        return self.last_scan.ranges[pos] < self.OBSTACLE_DISTANCE 
+    def check_forward_2_back(self):
+        pos = round(len(self.last_scan.ranges) / 2)
+        return self.last_scan.ranges[pos] < self.OBSTACLE_DISTANCE
 
-    def check_forward_2_stop(self): 
-        elapsed = self.get_clock().now() - Time.from_msg(self.last_scan.header.stamp) 
-        return elapsed > Duration(seconds=self.SCAN_TIMEOUT) 
+    def check_forward_2_stop(self):
+        elapsed = self.get_clock().now() - Time.from_msg(self.last_scan.header.stamp)
+        return elapsed > Duration(seconds=self.SCAN_TIMEOUT)
 
-    def check_stop_2_forward(self): 
-        elapsed = self.get_clock().now() - Time.from_msg(self.last_scan.header.stamp) 
-        return elapsed < Duration(seconds=self.SCAN_TIMEOUT) 
+    def check_stop_2_forward(self):
+        elapsed = self.get_clock().now() - Time.from_msg(self.last_scan.header.stamp)
+        return elapsed < Duration(seconds=self.SCAN_TIMEOUT)
 
-    def check_back_2_turn(self): 
-        elapsed = self.get_clock().now() - self.state_ts 
-        return elapsed > Duration(seconds=self.BACKING_TIME) 
+    def check_back_2_turn(self):
+        elapsed = self.get_clock().now() - self.state_ts
+        return elapsed > Duration(seconds=self.BACKING_TIME)
 
-    def check_turn_2_forward(self): 
-        elapsed = self.get_clock().now() - self.state_ts 
-        return elapsed > Duration(seconds=self.TURNING_TIME) 
+    def check_turn_2_forward(self):
+        elapsed = self.get_clock().now() - self.state_ts
+        return elapsed > Duration(seconds=self.TURNING_TIME)
 
-def main(args=None): 
-    rclpy.init(args=args) 
+def main(args=None):
+    rclpy.init(args=args)
 
-    bump_go_node = BumpGoNode() 
+    bump_go_node = BumpGoNode()
 
-    rclpy.spin(bump_go_node) 
+    rclpy.spin(bump_go_node)
 
-    bump_go_node.destroy_node() 
-    rclpy.shutdown() 
+    bump_go_node.destroy_node()
+    rclpy.shutdown()
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     main()
     \end{minted}
     \end{tcolorbox}
@@ -3334,11 +3334,11 @@ ament_package()
 <package format="3">
   <name>br2_tracking_msgs</name>
   <version>0.0.0</version>
-  
+
   <description>Messages for br2_tracking</description>
 
   <maintainer email="fmrico@gmail.com">Francisco Martin Rico</maintainer>
- 
+
   <license>Apache License, Version 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

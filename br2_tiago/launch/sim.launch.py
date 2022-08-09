@@ -46,7 +46,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     ld.add_action(tiago_sim_cmd)
- 
+
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_world_cmd)
 

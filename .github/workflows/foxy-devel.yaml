@@ -17,13 +17,13 @@ jobs:
       fail-fast: false
     steps:
       - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@0.2.1
+        uses: ros-tooling/setup-ros@0.3.3
         with:
           required-ros-distributions: foxy
       - name: Create custom repos
         run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/foxy-devel/third_parties.repos
       - name: build and test
-        uses: ros-tooling/action-ros-ci@0.2.3
+        uses: ros-tooling/action-ros-ci@0.2.5
         with:
           package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
           target-ros2-distro: foxy

@@ -12,12 +12,15 @@ jobs:
   build-and-test:
     runs-on: ${{ matrix.os }}
     container:
-      image: osrf/ros:humble-desktop-full
+      image: osrf/ros:humble-desktop
     strategy:
       matrix:
         os: [ubuntu-22.04]
       fail-fast: false
     steps:
+      - name: Install deps
+        run: sudo apt install -y wget python3-vcstool 
+        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/.github/third_parties_humble_ci.repos
       - name: Create custom repos
         run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/.github/third_parties_humble_ci.repos
       - name: build and test

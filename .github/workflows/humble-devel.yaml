@@ -18,8 +18,6 @@ jobs:
     steps:
       - name: Setup ROS 2
         uses: ros-tooling/setup-ros@0.4.0
-        with:
-          required-ros-distributions: humble
       - name: Create custom repos
         run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/.github/third_parties_foxy_ci.repos
       - name: build and test

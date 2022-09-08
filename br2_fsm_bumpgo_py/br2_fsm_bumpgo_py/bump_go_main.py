@@ -24,8 +24,8 @@ from rclpy.time import Time
 from sensor_msgs.msg import LaserScan
 
 
-
 class BumpGoNode(Node):
+
     def __init__(self):
         super().__init__('bump_go')
 

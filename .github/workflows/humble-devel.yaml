@@ -21,7 +21,7 @@ jobs:
         with:
           required-ros-distributions: humble
       - name: Create custom repos
-        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/main/.github/third_parties_humble_ci.repos
+        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/.github/third_parties_foxy_ci.repos
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.2.6
         with:

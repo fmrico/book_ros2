@@ -21,7 +21,7 @@ jobs:
       - name: Install deps
         run: sudo apt-get update && sudo apt-get install -y wget python3-vcstool python3-colcon-coveragepy-result
       - name: Create custom repos
-        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/.github/third_parties_humble_ci.repos
+        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/third_parties.repos
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.2.6
         with:

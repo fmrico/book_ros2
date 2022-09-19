@@ -6,43 +6,43 @@ repositories:
   ThirdParty/launch_pal:
     type: git
     url: https://github.com/pal-robotics/launch_pal.git
-    version: 0.0.3
+    version: master
   ThirdParty/pal_gazebo_worlds:
     type: git
     url: https://github.com/pal-robotics/pal_gazebo_worlds.git
-    version: foxy-devel
+    version: humble-devel
   ThirdParty/pmb2_robot:
     type: git
     url: https://github.com/pal-robotics/pmb2_robot.git
-    version: foxy-devel
+    version: 07e0fcd
   ThirdParty/pmb2_navigation:
     type: git
     url: https://github.com/pal-robotics/pmb2_navigation.git
-    version: foxy-devel
+    version: humble-devel
   ThirdParty/twist_mux:
     type: git
     url: https://github.com/ros-teleop/twist_mux.git
     version: rolling
   ThirdParty/tiago_robot:
     type: git
-    url: https://github.com/fmrico/tiago_robot.git
-    version: no-arm
+    url: https://github.com/fmrico/tiago_robot
+    version: humble-devel-no-arms
   ThirdParty/tiago_simulation:
     type: git
     url: https://github.com/pal-robotics/tiago_simulation.git
-    version: foxy-devel
+    version: humble-devel
   ThirdParty/hey5_description:
     type: git
     url: https://github.com/pal-robotics/hey5_description.git
-    version: foxy-devel
+    version: humble-devel
   ThirdParty/pal_gripper:
     type: git
     url: https://github.com/pal-robotics/pal_gripper.git
-    version: foxy-devel
+    version: humble-devel
   ThirdParty/tiago_description_calibration:
     type: git
     url: https://github.com/pal-robotics/tiago_description_calibration.git
-    version: foxy-devel
+    version: humble-devel
   ThirdParty/Groot:
     type: git
     url: https://github.com/BehaviorTree/Groot.git

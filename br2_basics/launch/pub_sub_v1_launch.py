@@ -20,12 +20,12 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     pub_cmd = Node(
-        package='basics',
+        package='br2_basics',
         executable='publisher',
         output='screen'
     )
     sub_cmd = Node(
-        package='basics',
+        package='br2_basics',
         executable='subscriber_class',
         output='screen'
     )

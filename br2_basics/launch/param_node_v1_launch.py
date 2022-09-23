@@ -20,7 +20,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     param_reader_cmd = Node(
-        package='basics',
+        package='br2_basics',
         executable='param_reader',
         parameters=[{
             'particles': 300,

@@ -7,6 +7,8 @@ Status](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml/
 [![GitHub Action
 Status](https://github.com/fmrico/book_ros2/workflows/foxy-devel/badge.svg)](https://github.com/fmrico/book_ros2)
 
+## Code
+
 This repository contains the source code shown and analyzed in book _A Concise Introduction to Robot Programming with ROS2_, as well as complementary teaching material that will be added.
 
 **Requirements for `main` branch**: Ubuntu 22.04 LTS + ROS2 Humble Hawksbill
@@ -15,6 +17,11 @@ This repository contains the source code shown and analyzed in book _A Concise I
 
 **Requirements for `foxy-devel` branch**: Ubuntu 20.04 LTS + ROS2 Foxy Fitzroy
 
+## Slides
+
+* [Slides in PDF](https://www.dropbox.com/s/nsx9s0ns6igfnoo/BR2_chapters_PDF.zip?dl=0)
+* [Slides in Keynote](https://www.dropbox.com/s/uzs281ztld4mau8/BR2_chapters_KEY.zip?dl=0)
+* [Slides in Powerpoint](https://www.dropbox.com/s/6ba6fiee86w9ufr/BR2_chapters_PPT.zip?dl=0)
 
 ![9781032264653](https://user-images.githubusercontent.com/3810011/183239477-c98ee6a0-332f-40d2-b368-08a1383747e6.jpg)
 

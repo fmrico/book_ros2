@@ -10,7 +10,7 @@ assignees: ''
 # Type of bug
 - [ ] A) Typo/error in Figure/text
 - [ ] B) Bug in code
-- [ ] C) General comment, recomendation or petition 
+- [ ] C) General comment, recommendation or petition 
 
 # Issue Description
 A clear and concise description of what the issue is (A, B, and C)

@@ -23,7 +23,7 @@ def generate_launch_description():
         package='br2_basics',
         executable='param_reader',
         parameters=[{
-            'particles': 300,
+            'number_particles': 300,
             'topics': ['scan', 'image'],
             'topic_types': ['sensor_msgs/msg/LaserScan', 'sensor_msgs/msg/Image']
         }],

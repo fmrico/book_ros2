@@ -42,8 +42,17 @@ repositories:
   ThirdParty/tiago_description_calibration:
     type: git
     url: https://github.com/pal-robotics/tiago_description_calibration.git
+    version: foxy-devel
+  ThirdParty/tiago_moveit_config:
+    type: git
+    url: https://github.com/pal-robotics/tiago_moveit_config.git
+    version: humble-devel
+  ThirdParty/tiago_navigation:
+    type: git
+    url: https://github.com/pal-robotics/tiago_navigation.git
     version: humble-devel
   ThirdParty/Groot:
     type: git
     url: https://github.com/BehaviorTree/Groot.git
     version: master
+

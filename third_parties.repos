@@ -2,7 +2,7 @@ repositories:
   ThirdParty/urdf_test:
     type: git
     url: https://github.com/pal-robotics/urdf_test
-    version: 2.0.0
+    version: humble-devel
   ThirdParty/launch_pal:
     type: git
     url: https://github.com/pal-robotics/launch_pal.git
@@ -14,19 +14,19 @@ repositories:
   ThirdParty/pmb2_robot:
     type: git
     url: https://github.com/pal-robotics/pmb2_robot.git
-    version: 07e0fcd
+    version: humble-devel
   ThirdParty/pmb2_navigation:
     type: git
     url: https://github.com/pal-robotics/pmb2_navigation.git
     version: humble-devel
-  ThirdParty/twist_mux:
-    type: git
-    url: https://github.com/ros-teleop/twist_mux.git
-    version: rolling
   ThirdParty/tiago_robot:
     type: git
-    url: https://github.com/fmrico/tiago_robot
-    version: humble-devel-no-arms
+    url: https://github.com/pal-robotics/tiago_robot.git
+    version: humble-devel
+  ThirdParty/tiago_navigation:
+    type: git
+    url: https://github.com/pal-robotics/tiago_navigation.git
+    version: humble-devel
   ThirdParty/tiago_simulation:
     type: git
     url: https://github.com/pal-robotics/tiago_simulation.git
@@ -39,9 +39,9 @@ repositories:
     type: git
     url: https://github.com/pal-robotics/pal_gripper.git
     version: humble-devel
-  ThirdParty/tiago_description_calibration:
+  ThirdParty/tiago_moveit_config:
     type: git
-    url: https://github.com/pal-robotics/tiago_description_calibration.git
+    url: https://github.com/pal-robotics/tiago_moveit_config.git
     version: humble-devel
   ThirdParty/Groot:
     type: git

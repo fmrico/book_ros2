@@ -39,4 +39,5 @@ private:
 };
 
 }  // namespace br2_tf2_detector
+
 #endif  // BR2_TF2_DETECTOR__OBSTACLEDETECTORNODE_HPP_

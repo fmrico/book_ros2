@@ -17,15 +17,14 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-
     detector_cmd = Node(package='br2_tf2_detector',
                         executable='detector',
                         output='screen',
                         parameters=[{
-                          'use_sim_time': True
+                            'use_sim_time': True
                         }],
                         remappings=[
-                          ('input_scan', '/scan_raw')
+                            ('input_scan', '/scan_raw')
                         ])
 
     ld = LaunchDescription()

@@ -58,7 +58,8 @@ ObstacleDetectorImprovedNode::scan_callback(sensor_msgs::msg::LaserScan::UniqueP
     tf2::Stamped<tf2::Transform> odom2laser;
     try {
       odom2laser_msg = tf_buffer_.lookupTransform(
-        "odom", "base_laser_link", tf2::timeFromSec(rclcpp::Time(msg->header.stamp).seconds()));
+        "odom", "base_laser_link",
+        tf2::timeFromSec(rclcpp::Time(msg->header.stamp).seconds() - 0.3));
       tf2::fromMsg(odom2laser_msg, odom2laser);
     } catch (tf2::TransformException & ex) {
       RCLCPP_WARN(get_logger(), "Obstacle transform not found: %s", ex.what());

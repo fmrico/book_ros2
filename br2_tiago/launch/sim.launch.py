@@ -35,7 +35,8 @@ def generate_launch_description():
     tiago_sim_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(tiago_gazebo_dir, 'launch', 'tiago_gazebo.launch.py')),
         launch_arguments={
-          'world_name': world
+          'world_name': world,
+          'arm': 'no-arm'
         }.items())
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(

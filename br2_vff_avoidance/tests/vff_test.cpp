@@ -226,7 +226,7 @@ TEST(vff_tests, ouput_vels)
       last_vel = *msg;
     });
 
-  ASSERT_EQ(vel_sub->get_publisher_count(), 2);
+  ASSERT_EQ(vel_sub->get_publisher_count(), 1);
   ASSERT_EQ(scan_pub->get_subscription_count(), 1);
 
   rclcpp::Rate rate(30);

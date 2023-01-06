@@ -6,6 +6,8 @@ labels: ''
 assignees: ''
 
 ---
+# Important!!!
+- [ ] I have checked that this issue/bug/fix/correction has not been already created before in open or closed issues.
 
 # Type of bug
 - [ ] A) Typo/error in Figure/text

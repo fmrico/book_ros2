@@ -19,9 +19,9 @@ This repository contains the source code shown and analyzed in book _A Concise I
 
 ## Slides
 
-* [Slides in PDF](https://www.dropbox.com/s/nsx9s0ns6igfnoo/BR2_chapters_PDF.zip?dl=0)
-* [Slides in Keynote](https://www.dropbox.com/s/uzs281ztld4mau8/BR2_chapters_KEY.zip?dl=0)
-* [Slides in Powerpoint](https://www.dropbox.com/s/6ba6fiee86w9ufr/BR2_chapters_PPT.zip?dl=0)
+* [Slides in PDF](https://www.dropbox.com/s/jgxuyz02wupkie6/BR2_Chapters_PDF.zip?dl=0)
+* [Slides in Keynote](https://www.dropbox.com/s/ge56cw4j2v7e6df/BR2_Chapters_KEY.zip?dl=0)
+* [Slides in Powerpoint](https://www.dropbox.com/s/s6y5z33ofsm2blw/BR2_Chapters_PPT.zip?dl=0)
 
 ![9781032264653](https://user-images.githubusercontent.com/3810011/183239477-c98ee6a0-332f-40d2-b368-08a1383747e6.jpg)
 

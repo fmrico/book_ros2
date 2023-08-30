@@ -39,8 +39,8 @@ private:
   rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
   std::shared_ptr<tf2_ros::StaticTransformBroadcaster> tf_broadcaster_;
 
-  tf2::BufferCore tf_buffer_;
-  tf2_ros::TransformListener tf_listener_;
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
+  std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
 };
 
 }  // namespace br2_tf2_detector

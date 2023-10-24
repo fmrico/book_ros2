@@ -13,6 +13,9 @@ set(dependencies
 add_executable(publisher src/publisher.cpp)
 ament_target_dependencies(publisher ${dependencies})
 
+add_executable(subscriber src/subscriber.cpp)
+ament_target_dependencies(subscriber ${dependencies})
+
 add_executable(publisher_class src/publisher_class.cpp)
 ament_target_dependencies(publisher_class ${dependencies})
 
@@ -34,6 +37,7 @@ ament_target_dependencies(param_reader ${dependencies})
 install(TARGETS
   publisher
   publisher_class
+  subscriber
   subscriber_class
   executors
   logger

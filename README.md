@@ -1,11 +1,12 @@
 # A Concise Introduction to Robot Programming with ROS2 - Code Repository
 
-[![GitHub Action
-Status](https://github.com/fmrico/book_ros2/workflows/main/badge.svg)](https://github.com/fmrico/book_ros2)
-[![GitHub Action
-Status](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml/badge.svg?branch=humble-devel)](https://github.com/fmrico/book_ros2)
-[![GitHub Action
-Status](https://github.com/fmrico/book_ros2/workflows/foxy-devel/badge.svg)](https://github.com/fmrico/book_ros2)
+## RUST version
+
+Missing features in rclrs while migrating:
+- [ ] Rate
+- [ ] Loggers
+- [ ] Timers
+
 
 ## Code
 

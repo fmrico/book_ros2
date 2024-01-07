@@ -1,4 +1,4 @@
-// Copyright 2021 Intelligent Robotics Lab
+// Copyright 2024 Intelligent Robotics Lab
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,25 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "rclcpp/rclcpp.hpp"
+use std::env;
+use anyhow::{Error, Result};
 
-using namespace std::chrono_literals;
+fn main() -> Result<(), Error> {
+    let context = rclrs::Context::new(env::args())?;
 
-int main(int argc, char * argv[])
-{
-  rclcpp::init(argc, argv);
-
-  auto node = rclcpp::Node::make_shared("logger_node");
-
-  rclcpp::Rate loop_rate(500ms);
-  int counter = 0;
-  while (rclcpp::ok()) {
-    RCLCPP_INFO(node->get_logger(), "Hello %d", counter++);
-
-    rclcpp::spin_some(node);
-    loop_rate.sleep();
+    let node = rclrs::create_node(&context, "logger_node")?;
+  
+    // ToImpl: Clocks, Time, SimTime, Rate  
+    let mut counter = 0;
+    while context.ok() {
+      // ToImpl: Loggers
+      println!("Hello {}", counter);
+      counter = counter + 1;
+      std::thread::sleep(std::time::Duration::from_millis(500));
   }
-
-  rclcpp::shutdown();
-  return 0;
+  Ok(())
 }

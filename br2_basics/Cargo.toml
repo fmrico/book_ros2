@@ -1,0 +1,25 @@
+[package]
+name = "br2_basics"
+version = "0.0.1"
+authors = ["Francisco Martín Rico <fmrico@gmail.com>"]
+edition = "2021"
+
+[[bin]]
+name = "logger"
+path = "src/logger.rs"
+
+[[bin]]
+name = "logger_struct"
+path = "src/logger_struct.rs"
+
+[dependencies]
+anyhow = {version = "1", features = ["backtrace"]}
+
+[dependencies.rclrs]
+version = "0.3"
+
+[dependencies.rosidl_runtime_rs]
+version = "0.3"
+
+[package.metadata.ros]
+install_to_share = ["launch"]

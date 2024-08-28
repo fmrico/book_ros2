@@ -136,8 +136,8 @@ HeadController::control_sycle()
     double control_pan = pan_pid_.get_output(last_command_->pan);
     double control_tilt = tilt_pid_.get_output(last_command_->tilt);
 
-    command_msg.points[0].positions[0] = last_state_->actual.positions[0] - control_pan;
-    command_msg.points[0].positions[1] = last_state_->actual.positions[1] - control_tilt;
+    command_msg.points[0].positions[0] = last_state_->feedback.positions[0] - control_pan;
+    command_msg.points[0].positions[1] = last_state_->feedback.positions[1] - control_tilt;
 
     command_msg.points[0].velocities[0] = 0.5;
     command_msg.points[0].velocities[1] = 0.5;

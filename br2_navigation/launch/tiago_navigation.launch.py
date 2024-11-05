@@ -60,7 +60,7 @@ def generate_launch_description():
         description='Automatically startup the nav2 stack')
 
     declare_use_rviz_cmd = DeclareLaunchArgument(
-        'rviz', default_value='True')
+        'rviz', default_value='False')
 
     nav2_bringup_cmd_group = GroupAction([
         IncludeLaunchDescription(

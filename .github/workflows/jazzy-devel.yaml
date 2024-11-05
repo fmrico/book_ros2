@@ -24,8 +24,6 @@ jobs:
         uses: ros-tooling/setup-ros@0.7.9
         with:
           required-ros-distributions: jazzy
-      - name: Install BT.CPP v4 and test_msgs (provisional Fix)
-        run: sudo apt-get install ros-jazzy-behaviortree-cpp ros-jazzy-test-msgs
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.3.15
         with:

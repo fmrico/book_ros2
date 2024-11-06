@@ -92,15 +92,7 @@ AvoidanceNode::get_vff(const sensor_msgs::msg::LaserScan & scan)
   vff_vector.result = {0.0, 0.0};
 
   // Get the index of nearest obstacle
-  int min_idx = -1;
-  float min_distance = std::numeric_limits<float>::infinity();
-
-  for (size_t i = 0; i < scan.ranges.size(); ++i) {
-    if (std::isfinite(scan.ranges[i]) && scan.ranges[i] < min_distance) {
-      min_distance = scan.ranges[i];
-      min_idx = i;
-    }
-  }
+  int min_idx = std::min_element(scan.ranges.begin(), scan.ranges.end()) - scan.ranges.begin();
 
   // Get the distance to nearest obstacle
   float distance_min = scan.ranges[min_idx];

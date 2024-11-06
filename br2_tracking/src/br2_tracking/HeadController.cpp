@@ -82,10 +82,10 @@ HeadController::on_deactivate(const rclcpp_lifecycle::State & previous_state)
   command_msg.points[0].accelerations.resize(2);
   command_msg.points[0].positions[0] = 0.0;
   command_msg.points[0].positions[1] = 0.0;
-  command_msg.points[0].velocities[0] = 0.1;
-  command_msg.points[0].velocities[1] = 0.1;
-  command_msg.points[0].accelerations[0] = 0.1;
-  command_msg.points[0].accelerations[1] = 0.1;
+  command_msg.points[0].velocities[0] = 0.0;
+  command_msg.points[0].velocities[1] = 0.0;
+  command_msg.points[0].accelerations[0] = 0.0;
+  command_msg.points[0].accelerations[1] = 0.0;
   command_msg.points[0].time_from_start = rclcpp::Duration(1s);
 
   joint_pub_->publish(command_msg);
@@ -127,10 +127,10 @@ HeadController::control_sycle()
   if (last_command_ == nullptr || (now() - last_command_ts_) > 100ms) {
     command_msg.points[0].positions[0] = 0.0;
     command_msg.points[0].positions[1] = 0.0;
-    command_msg.points[0].velocities[0] = 0.1;
-    command_msg.points[0].velocities[1] = 0.1;
-    command_msg.points[0].accelerations[0] = 0.1;
-    command_msg.points[0].accelerations[1] = 0.1;
+    command_msg.points[0].velocities[0] = 0.0;
+    command_msg.points[0].velocities[1] = 0.0;
+    command_msg.points[0].accelerations[0] = 0.0;
+    command_msg.points[0].accelerations[1] = 0.0;
     command_msg.points[0].time_from_start = rclcpp::Duration(1s);
   } else {
     double control_pan = pan_pid_.get_output(last_command_->pan);
@@ -139,10 +139,10 @@ HeadController::control_sycle()
     command_msg.points[0].positions[0] = last_state_->feedback.positions[0] - control_pan;
     command_msg.points[0].positions[1] = last_state_->feedback.positions[1] - control_tilt;
 
-    command_msg.points[0].velocities[0] = 0.5;
-    command_msg.points[0].velocities[1] = 0.5;
-    command_msg.points[0].accelerations[0] = 0.5;
-    command_msg.points[0].accelerations[1] = 0.5;
+    command_msg.points[0].velocities[0] = 0.0;
+    command_msg.points[0].velocities[1] = 0.0;
+    command_msg.points[0].accelerations[0] = 0.0;
+    command_msg.points[0].accelerations[1] = 0.0;
   }
 
   joint_pub_->publish(command_msg);

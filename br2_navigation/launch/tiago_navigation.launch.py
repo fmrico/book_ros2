@@ -22,6 +22,7 @@ from launch.actions import (DeclareLaunchArgument, GroupAction,
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PythonExpression
+from launch_ros.actions import Node
 
 def generate_launch_description():
     launch_rmw_dir = get_package_share_directory('br2_navigation')
@@ -32,7 +33,7 @@ def generate_launch_description():
     map_yaml_file = LaunchConfiguration('map')
     use_sim_time = LaunchConfiguration('use_sim_time')
     autostart = LaunchConfiguration('autostart')
-
+    rviz = LaunchConfiguration('rviz')
 
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
@@ -46,7 +47,7 @@ def generate_launch_description():
 
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(launch_rmw_dir, 'maps', 'home.yaml'),
+        default_value=os.path.join(launch_rmw_dir, 'maps', 'aws_house.yaml'),
         description='Full path to map yaml file to load')
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
@@ -58,13 +59,16 @@ def generate_launch_description():
         'autostart', default_value='true',
         description='Automatically startup the nav2 stack')
 
+    declare_use_rviz_cmd = DeclareLaunchArgument(
+        'rviz', default_value='False')
+
     nav2_bringup_cmd_group = GroupAction([
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'slam_launch.py')),
             condition=IfCondition(slam),
             launch_arguments={'use_sim_time': use_sim_time,
                               'autostart': autostart,
-                              'params_file': params_file}.items()),
+                              'slam_params_file': params_file}.items()),
 
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch',
@@ -77,13 +81,38 @@ def generate_launch_description():
                               'use_lifecycle_mgr': 'false'}.items()),
 
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(launch_rmw_dir, 'launch', 'navigation_launch.py')),
+            PythonLaunchDescriptionSource(os.path.join(nav2_dir, 'launch', 'navigation_launch.py')),
             launch_arguments={'use_sim_time': use_sim_time,
                               'autostart': autostart,
                               'params_file': params_file,
-                              'use_lifecycle_mgr': 'false',
                               'map_subscribe_transient_local': 'true'}.items()),
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                os.path.join(nav2_dir, 'launch', 'rviz_launch.py')
+            ),
+            launch_arguments={
+                'use_sim_time': use_sim_time,
+                'rviz': rviz,
+            }.items()
+        )
     ])
+
+    twist_stamper = Node(
+        package="twist_stamper",
+        executable="twist_stamper",
+        name="twist_stamper_nav",
+        output="screen",
+        parameters = [
+            {
+                'frame_id': 'base_footprint',
+                'use_sim_time': True,
+            }
+        ],
+        remappings=[
+            ('cmd_vel_in', '/cmd_vel_nav'),
+            ('cmd_vel_out', '/mobile_base_controller/cmd_vel')
+        ],
+    )
 
     ld = LaunchDescription()
 
@@ -92,7 +121,8 @@ def generate_launch_description():
     ld.add_action(declare_map_yaml_cmd)
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_autostart_cmd)
-
+    ld.add_action(declare_use_rviz_cmd) 
     ld.add_action(nav2_bringup_cmd_group)
+    ld.add_action(twist_stamper)
 
     return ld

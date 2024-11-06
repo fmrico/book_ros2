@@ -42,23 +42,23 @@ GetWaypoint::GetWaypoint(
   wp.pose.orientation.w = 1.0;
 
   // recharge wp
-  wp.pose.position.x = 3.67;
-  wp.pose.position.y = -0.24;
+  wp.pose.position.x = -1.0;
+  wp.pose.position.y = 4.14;
   recharge_point_ = wp;
 
   // wp1
-  wp.pose.position.x = 1.07;
-  wp.pose.position.y = -12.38;
+  wp.pose.position.x = 6.7;
+  wp.pose.position.y = -2.54;
   waypoints_.push_back(wp);
 
   // wp2
-  wp.pose.position.x = -5.32;
-  wp.pose.position.y = -8.85;
+  wp.pose.position.x = 0.45;
+  wp.pose.position.y = -3.9;
   waypoints_.push_back(wp);
 
   // wp3
-  wp.pose.position.x = -0.56;
-  wp.pose.position.y = 0.24;
+  wp.pose.position.x = -6.01;
+  wp.pose.position.y = -0.3;
   waypoints_.push_back(wp);
 }
 

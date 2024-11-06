@@ -35,8 +35,8 @@ def generate_launch_description():
           'use_sim_time': True
         }, params_file],
         remappings=[
-          ('input_image', '/head_front_camera/rgb/image_raw'),
-          ('joint_state', '/head_controller/state'),
+          ('input_image', '/head_front_camera/image'),
+          ('joint_state', '/head_controller/controller_state'),
           ('joint_command', '/head_controller/joint_trajectory')
         ],
         output='screen'

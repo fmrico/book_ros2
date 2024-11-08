@@ -1,7 +1,7 @@
 # A Concise Introduction to Robot Programming with ROS2 - Code Repository
 
-[![GitHub Action
-Status](https://github.com/fmrico/book_ros2/workflows/main/badge.svg)](https://github.com/fmrico/book_ros2)
+[![rolling](https://github.com/fmrico/book_ros2/actions/workflows/rolling.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/rolling.yaml)
+[![jazzy-devel](https://github.com/fmrico/book_ros2/actions/workflows/jazzy-devel.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/jazzy-devel.yaml)
 [![GitHub Action
 Status](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml/badge.svg?branch=humble-devel)](https://github.com/fmrico/book_ros2)
 [![GitHub Action
@@ -11,11 +11,13 @@ Status](https://github.com/fmrico/book_ros2/workflows/foxy-devel/badge.svg)](htt
 
 This repository contains the source code shown and analyzed in book _A Concise Introduction to Robot Programming with ROS2_, as well as complementary teaching material that will be added.
 
-**Requirements for `main` branch**: Ubuntu 22.04 LTS + ROS2 Humble Hawksbill
+**Requirements for `rolling` branch**: Ubuntu 24.04 LTS + ROS 2 Rolling Ridley
 
-**Requirements for `humble-devel` branch**: Ubuntu 22.04 LTS + ROS2 Humble Hawksbill
+**Requirements for `jazzy-devel` branch**: Ubuntu 24.04 LTS + ROS 2 Jazzy Jalisco
 
-**Requirements for `foxy-devel` branch**: Ubuntu 20.04 LTS + ROS2 Foxy Fitzroy
+**Requirements for `humble-devel` branch**: Ubuntu 22.04 LTS + ROS 2 Humble Hawksbill
+
+**Requirements for `foxy-devel` branch**: Ubuntu 20.04 LTS + ROS 2 Foxy Fitzroy
 
 ## Slides
 

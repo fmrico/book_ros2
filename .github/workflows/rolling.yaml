@@ -1,0 +1,38 @@
+name: rolling
+
+on:
+  pull_request:
+    branches:
+      - rolling
+  push:
+    branches:
+      - rolling
+
+
+jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-24.04]
+      fail-fast: false
+    steps:
+      - name: Install popf deps
+        run: sudo apt-get install libfl-dev
+      - uses: actions/checkout@v2
+      - name: Setup ROS 2
+        uses: ros-tooling/setup-ros@0.7.9
+        with:
+          required-ros-distributions: rolling
+      - name: build and test
+        uses: ros-tooling/action-ros-ci@0.3.15
+        with:
+          package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
+          target-ros2-distro: rolling
+          vcs-repo-file-url: ${GITHUB_WORKSPACE}/third_parties.repos
+          colcon-defaults: |
+            {
+              "test": {
+                "parallel-workers" : 1
+              }
+            }

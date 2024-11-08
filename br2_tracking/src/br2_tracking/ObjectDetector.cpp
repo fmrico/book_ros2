@@ -15,7 +15,7 @@
 #include <vector>
 
 #include "opencv2/opencv.hpp"
-#include "cv_bridge/cv_bridge.h"
+#include "cv_bridge/cv_bridge.hpp"
 
 #include "br2_tracking/ObjectDetector.hpp"
 

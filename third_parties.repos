@@ -1,48 +1,72 @@
 repositories:
-  ThirdParty/urdf_test:
-    type: git
-    url: https://github.com/pal-robotics/urdf_test
-    version: humble-devel
-  ThirdParty/launch_pal:
-    type: git
-    url: https://github.com/pal-robotics/launch_pal.git
-    version: master
-  ThirdParty/pal_gazebo_worlds:
-    type: git
-    url: https://github.com/pal-robotics/pal_gazebo_worlds.git
-    version: humble-devel
-  ThirdParty/pmb2_robot:
-    type: git
-    url: https://github.com/pal-robotics/pmb2_robot.git
-    version: humble-devel
-  ThirdParty/pmb2_navigation:
-    type: git
-    url: https://github.com/pal-robotics/pmb2_navigation.git
-    version: humble-devel
-  ThirdParty/tiago_robot:
-    type: git
-    url: https://github.com/pal-robotics/tiago_robot.git
-    version: humble-devel
-  ThirdParty/tiago_navigation:
-    type: git
-    url: https://github.com/pal-robotics/tiago_navigation.git
-    version: humble-devel
   ThirdParty/tiago_simulation:
     type: git
-    url: https://github.com/pal-robotics/tiago_simulation.git
-    version: humble-devel
-  ThirdParty/hey5_description:
+    url: https://github.com/Tiago-Harmonic/tiago_simulation.git
+    version: rolling
+  ThirdParty/launch_pal:
     type: git
-    url: https://github.com/pal-robotics/hey5_description.git
+    url: https://github.com/Tiago-Harmonic/launch_pal.git
+    version: master
+  ThirdParty/br2_gazebo_worlds:
+    type: git
+    url: https://github.com/Tiago-Harmonic/br2_gazebo_worlds.git
+    version: main
+  ThirdParty/navigation2:
+    type: git
+    url: https://github.com/ros-navigation/navigation2.git
+    version: main
+  ThirdParty/pal_maps:
+    type: git
+    url: https://github.com/pal-robotics/pal_maps
     version: humble-devel
+  ThirdParty/play_motion2:
+    type: git
+    url: https://github.com/Tiago-Harmonic/play_motion2.git
+    version: rolling
+  ThirdParty/pmb2_robot:
+    type: git
+    url: https://github.com/Tiago-Harmonic/pmb2_robot.git
+    version: rolling
+  ThirdParty/pmb2_navigation:
+    type: git
+    url: https://github.com/Tiago-Harmonic/pmb2_navigation.git
+    version: rolling
+  ThirdParty/tiago_robot:
+    type: git
+    url: https://github.com/Tiago-Harmonic/tiago_robot.git
+    version: rolling
+  ThirdParty/tiago_navigation:
+    type: git
+    url: https://github.com/Tiago-Harmonic/tiago_navigation.git
+    version: rolling
+  ThirdParty/tiago_simulation:
+    type: git
+    url: https://github.com/Tiago-Harmonic/tiago_simulation.git
+    version: rolling
+  ThirdParty/pal_hey5:
+    type: git
+    url: https://github.com/Tiago-Harmonic/pal_hey5.git
+    version: rolling
   ThirdParty/pal_gripper:
     type: git
-    url: https://github.com/pal-robotics/pal_gripper.git
-    version: humble-devel
+    url: https://github.com/Tiago-Harmonic/pal_gripper.git
+    version: rolling
+  ThirdParty/pal_robotiq_gripper:
+    type: git
+    url: https://github.com/Tiago-Harmonic/pal_robotiq_gripper.git
+    version: rolling
   ThirdParty/tiago_moveit_config:
     type: git
-    url: https://github.com/pal-robotics/tiago_moveit_config.git
-    version: humble-devel
+    url: https://github.com/Tiago-Harmonic/tiago_moveit_config.git
+    version: rolling
+  ThirdParty/tiago_omni_base:
+    type: git
+    url: https://github.com/Tiago-Harmonic/omni_base_robot.git
+    version: rolling
+  ThirdParty/pal_urdf_utils:
+    type: git
+    url: https://github.com/Tiago-Harmonic/pal_urdf_utils.git
+    version: rolling
   ThirdParty/Groot:
     type: git
     url: https://github.com/BehaviorTree/Groot.git

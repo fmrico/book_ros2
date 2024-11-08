@@ -305,8 +305,8 @@ TEST(bt_action, get_waypoint_btn)
     auto point = blackboard->get<geometry_msgs::msg::PoseStamped>("waypoint");
 
     ASSERT_EQ(counter, 1);
-    ASSERT_NEAR(point.pose.position.x, 3.67, 0.0000001);
-    ASSERT_NEAR(point.pose.position.y, -0.24, 0.0000001);
+    ASSERT_NEAR(point.pose.position.x, -1.0, 0.0000001);
+    ASSERT_NEAR(point.pose.position.y, 4.14, 0.0000001);
   }
 
   {
@@ -354,22 +354,22 @@ TEST(bt_action, get_waypoint_btn)
 
     const auto & waypoints = StoreWP::waypoints_;
     ASSERT_EQ(waypoints.size(), 7);
-    ASSERT_NEAR(waypoints[0].pose.position.x, 1.07, 0.0000001);
-    ASSERT_NEAR(waypoints[0].pose.position.y, -12.38, 0.0000001);
-    ASSERT_NEAR(waypoints[1].pose.position.x, -5.32, 0.0000001);
-    ASSERT_NEAR(waypoints[1].pose.position.y, -8.85, 0.0000001);
-    ASSERT_NEAR(waypoints[2].pose.position.x, -0.56, 0.0000001);
-    ASSERT_NEAR(waypoints[2].pose.position.y, 0.24, 0.0000001);
+    ASSERT_NEAR(waypoints[0].pose.position.x, 6.7, 0.0000001);
+    ASSERT_NEAR(waypoints[0].pose.position.y, -2.54, 0.0000001);
+    ASSERT_NEAR(waypoints[1].pose.position.x, 0.45, 0.0000001);
+    ASSERT_NEAR(waypoints[1].pose.position.y, -3.9, 0.0000001);
+    ASSERT_NEAR(waypoints[2].pose.position.x, -6.01, 0.0000001);
+    ASSERT_NEAR(waypoints[2].pose.position.y, -0.3, 0.0000001);
 
-    ASSERT_NEAR(waypoints[3].pose.position.x, 3.67, 0.0000001);
-    ASSERT_NEAR(waypoints[3].pose.position.y, -0.24, 0.0000001);
+    ASSERT_NEAR(waypoints[3].pose.position.x, -1.0, 0.0000001);
+    ASSERT_NEAR(waypoints[3].pose.position.y, 4.14, 0.0000001);
 
-    ASSERT_NEAR(waypoints[4].pose.position.x, 1.07, 0.0000001);
-    ASSERT_NEAR(waypoints[4].pose.position.y, -12.38, 0.0000001);
-    ASSERT_NEAR(waypoints[5].pose.position.x, -5.32, 0.0000001);
-    ASSERT_NEAR(waypoints[5].pose.position.y, -8.85, 0.0000001);
-    ASSERT_NEAR(waypoints[6].pose.position.x, -0.56, 0.0000001);
-    ASSERT_NEAR(waypoints[6].pose.position.y, 0.24, 0.0000001);
+    ASSERT_NEAR(waypoints[4].pose.position.x, 6.7, 0.0000001);
+    ASSERT_NEAR(waypoints[4].pose.position.y, -2.54, 0.0000001);
+    ASSERT_NEAR(waypoints[5].pose.position.x, 0.45, 0.0000001);
+    ASSERT_NEAR(waypoints[5].pose.position.y, -3.9, 0.0000001);
+    ASSERT_NEAR(waypoints[6].pose.position.x, -6.01, 0.0000001);
+    ASSERT_NEAR(waypoints[6].pose.position.y, -0.3, 0.0000001);
   }
 }
 

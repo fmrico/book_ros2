@@ -17,7 +17,7 @@
 
 #include "br2_bt_bumpgo/Forward.hpp"
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
+#include "behaviortree_cpp/behavior_tree.h"
 
 #include "geometry_msgs/msg/twist.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -32,7 +32,7 @@ Forward::Forward(
   const BT::NodeConfiguration & conf)
 : BT::ActionNodeBase(xml_tag_name, conf)
 {
-  config().blackboard->get("node", node_);
+  [[maybe_unused]] bool success = config().blackboard->get("node", node_);
 
   vel_pub_ = node_->create_publisher<geometry_msgs::msg::Twist>("/output_vel", 100);
 }
@@ -49,7 +49,7 @@ Forward::tick()
 
 }  // namespace br2_bt_bumpgo
 
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "behaviortree_cpp/bt_factory.h"
 BT_REGISTER_NODES(factory)
 {
   factory.registerNodeType<br2_bt_bumpgo::Forward>("Forward");

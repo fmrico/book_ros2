@@ -22,7 +22,7 @@
 #include "lifecycle_msgs/srv/get_state.hpp"
 #include "lifecycle_msgs/msg/state.hpp"
 
-#include "behaviortree_cpp_v3/action_node.h"
+#include "behaviortree_cpp/action_node.h"
 #include "rclcpp/rclcpp.hpp"
 
 namespace br2_bt_patrolling
@@ -98,7 +98,7 @@ public:
     if (ctrl_node_state_ == lifecycle_msgs::msg::State::PRIMARY_STATE_ACTIVE) {
       set_state(lifecycle_msgs::msg::State::PRIMARY_STATE_INACTIVE);
     }
-    setStatus(BT::NodeStatus::IDLE);
+    resetStatus();
   }
 
   // Get the state of the controlled node

@@ -17,7 +17,7 @@
 
 #include "br2_bt_bumpgo/IsObstacle.hpp"
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
+#include "behaviortree_cpp/behavior_tree.h"
 
 #include "sensor_msgs/msg/laser_scan.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -33,7 +33,7 @@ IsObstacle::IsObstacle(
   const BT::NodeConfiguration & conf)
 : BT::ConditionNode(xml_tag_name, conf)
 {
-  config().blackboard->get("node", node_);
+  [[maybe_unused]] bool success = config().blackboard->get("node", node_);
 
   laser_sub_ = node_->create_subscription<sensor_msgs::msg::LaserScan>(
     "/input_scan", 100, std::bind(&IsObstacle::laser_callback, this, _1));
@@ -66,7 +66,7 @@ IsObstacle::tick()
 
 }  // namespace br2_bt_bumpgo
 
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "behaviortree_cpp/bt_factory.h"
 BT_REGISTER_NODES(factory)
 {
   factory.registerNodeType<br2_bt_bumpgo::IsObstacle>("IsObstacle");

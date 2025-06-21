@@ -10,36 +10,38 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
 find_package(rclcpp_action REQUIRED)
-find_package(behaviortree_cpp_v3 REQUIRED)
+find_package(behaviortree_cpp REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 
-find_package(ZMQ)
-if(ZMQ_FOUND)
-    message(STATUS "ZeroMQ found.")
-    add_definitions(-DZMQ_FOUND)
-else()
-  message(WARNING "ZeroMQ NOT found. Not including PublisherZMQ.")
-endif()
-
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 
 set(dependencies
+    rclcpp::rclcpp
+    rclcpp_lifecycle::rclcpp_lifecycle
+    rclcpp_action::rclcpp_action
+    behaviortree_cpp::behaviortree_cpp
+    ament_index_cpp::ament_index_cpp
+    ${action_msgs_TARGETS}
+    ${lifecycle_msgs_TARGETS}
+    ${geometry_msgs_TARGETS}
+    ${nav2_msgs_TARGETS}
+)
+
+set(export_dependencies
     rclcpp
     rclcpp_lifecycle
     rclcpp_action
-    behaviortree_cpp_v3
+    behaviortree_cpp
     action_msgs
     lifecycle_msgs
     geometry_msgs
     nav2_msgs
     ament_index_cpp
 )
-
-include_directories(include ${ZMQ_INCLUDE_DIRS})
 
 add_library(br2_recharge_bt_node SHARED src/br2_bt_patrolling/Recharge.cpp)
 add_library(br2_patrol_bt_node SHARED src/br2_bt_patrolling/Patrol.cpp)
@@ -57,24 +59,29 @@ list(APPEND plugin_libs
 )
 
 foreach(bt_plugin ${plugin_libs})
-  ament_target_dependencies(${bt_plugin} ${dependencies})
+  target_include_directories(${bt_plugin} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+  )
+  target_link_libraries(${bt_plugin} ${dependencies})
   target_compile_definitions(${bt_plugin} PRIVATE BT_PLUGIN_EXPORT)
 endforeach()
 
 add_executable(patrolling_main src/patrolling_main.cpp)
-ament_target_dependencies(patrolling_main ${dependencies})
-target_link_libraries(patrolling_main ${ZMQ_LIBRARIES})
+target_link_libraries(patrolling_main ${dependencies})
 
 install(TARGETS
   ${plugin_libs}
   patrolling_main
+  EXPORT export_${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY include/
-  DESTINATION include/
+install(
+  DIRECTORY include/
+  DESTINATION include/${PROJECT_NAME}
 )
 
 install(DIRECTORY behavior_tree_xml launch
@@ -94,7 +101,9 @@ if(BUILD_TESTING)
   add_subdirectory(tests)
 endif()
 
-ament_export_include_directories(include)
-ament_export_dependencies(${dependencies})
+ament_export_include_directories("include/${PROJECT_NAME}")
+ament_export_libraries(${bt_plugin})
+ament_export_dependencies(${export_dependencies})
+ament_export_targets(export_${PROJECT_NAME})
 
 ament_package()

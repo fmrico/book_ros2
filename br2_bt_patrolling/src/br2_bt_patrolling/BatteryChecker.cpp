@@ -18,7 +18,7 @@
 
 #include "br2_bt_patrolling/BatteryChecker.hpp"
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
+#include "behaviortree_cpp/behavior_tree.h"
 
 #include "geometry_msgs/msg/twist.hpp"
 
@@ -35,7 +35,7 @@ BatteryChecker::BatteryChecker(
   const BT::NodeConfiguration & conf)
 : BT::ConditionNode(xml_tag_name, conf)
 {
-  config().blackboard->get("node", node_);
+  [[maybe_unused]] bool success = config().blackboard->get("node", node_);
 
   vel_sub_ = node_->create_subscription<geometry_msgs::msg::Twist>(
     "/output_vel", 100, std::bind(&BatteryChecker::vel_callback, this, _1));
@@ -87,7 +87,7 @@ BatteryChecker::tick()
 
 }  // namespace br2_bt_patrolling
 
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "behaviortree_cpp/bt_factory.h"
 BT_REGISTER_NODES(factory)
 {
   factory.registerNodeType<br2_bt_patrolling::BatteryChecker>("BatteryChecker");

@@ -18,9 +18,9 @@
 #include <vector>
 #include <set>
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
-#include "behaviortree_cpp_v3/bt_factory.h"
-#include "behaviortree_cpp_v3/utils/shared_library.h"
+#include "behaviortree_cpp/behavior_tree.h"
+#include "behaviortree_cpp/bt_factory.h"
+#include "behaviortree_cpp/utils/shared_library.h"
 
 #include "ament_index_cpp/get_package_share_directory.hpp"
 
@@ -157,7 +157,7 @@ TEST(bt_action, recharge_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <Recharge    name="recharge"/>
       </BehaviorTree>
@@ -171,7 +171,7 @@ TEST(bt_action, recharge_btn)
 
   bool finish = false;
   while (!finish && rclcpp::ok()) {
-    finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
     rate.sleep();
   }
 
@@ -192,7 +192,7 @@ TEST(bt_action, patrol_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <Patrol    name="patrol"/>
       </BehaviorTree>
@@ -207,7 +207,7 @@ TEST(bt_action, patrol_btn)
   bool finish = false;
   int counter = 0;
   while (!finish && rclcpp::ok()) {
-    finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
     rclcpp::spin_some(node_sink->get_node_base_interface());
     rate.sleep();
   }
@@ -241,7 +241,7 @@ TEST(bt_action, move_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <Move    name="move" goal="{goal}"/>
       </BehaviorTree>
@@ -259,7 +259,7 @@ TEST(bt_action, move_btn)
 
   int counter = 0;
   while (!finish && rclcpp::ok()) {
-    finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
     rate.sleep();
   }
 
@@ -280,7 +280,7 @@ TEST(bt_action, get_waypoint_btn)
 
     std::string xml_bt =
       R"(
-      <root main_tree_to_execute = "MainTree" >
+      <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
         <BehaviorTree ID="MainTree">
           <GetWaypoint    name="recharge" wp_id="{id}" waypoint="{waypoint}"/>
         </BehaviorTree>
@@ -297,7 +297,7 @@ TEST(bt_action, get_waypoint_btn)
     bool finish = false;
     int counter = 0;
     while (!finish && rclcpp::ok()) {
-      finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+      finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
       counter++;
       rate.sleep();
     }
@@ -318,7 +318,7 @@ TEST(bt_action, get_waypoint_btn)
 
     std::string xml_bt =
       R"(
-      <root main_tree_to_execute = "MainTree" >
+      <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
         <BehaviorTree ID="MainTree">
           <Sequence name="root_sequence">
              <GetWaypoint    name="wp1" wp_id="next" waypoint="{waypoint}"/>
@@ -348,7 +348,7 @@ TEST(bt_action, get_waypoint_btn)
 
     bool finish = false;
     while (!finish && rclcpp::ok()) {
-      finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+      finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
       rate.sleep();
     }
 
@@ -386,7 +386,7 @@ TEST(bt_action, battery_checker_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <ReactiveSequence>
               <BatteryChecker    name="battery_checker"/>
@@ -406,7 +406,7 @@ TEST(bt_action, battery_checker_btn)
   bool finish = false;
   int counter = 0;
   while (!finish && rclcpp::ok()) {
-    finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
 
     vel_pub->publish(vel);
 
@@ -547,7 +547,7 @@ TEST(bt_action, track_objects_btn_3)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <KeepRunningUntilFailure>
               <TrackObjects    name="track_objects"/>
@@ -568,7 +568,7 @@ TEST(bt_action, track_objects_btn_3)
       lifecycle_msgs::msg::State::PRIMARY_STATE_INACTIVE);
 
     while (rclcpp::ok() && (node->now() - start) < 1s) {
-      tree.rootNode()->executeTick() == BT::NodeStatus::RUNNING;
+      tree.tickOnce() == BT::NodeStatus::RUNNING;
 
       rclcpp::spin_some(node);
       rate.sleep();
@@ -618,9 +618,9 @@ TEST(bt_action, move_track_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
-          <Parallel success_threshold="1" failure_threshold="1">
+          <Parallel success_count="1" failure_count="1">
             <TrackObjects    name="track_objects"/>
             <Move    name="move" goal="{goal}"/>
           </Parallel>
@@ -643,7 +643,7 @@ TEST(bt_action, move_track_btn)
   auto start = node->now();
   auto finish_tree = false;
   while (rclcpp::ok() && (node->now() - start) < 1s) {
-    finish_tree = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish_tree = tree.tickOnce() == BT::NodeStatus::SUCCESS;
 
     rclcpp::spin_some(node);
     rate.sleep();
@@ -655,7 +655,7 @@ TEST(bt_action, move_track_btn)
     lifecycle_msgs::msg::State::PRIMARY_STATE_ACTIVE);
 
   while (rclcpp::ok() && !finish_tree) {
-    finish_tree = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish_tree = tree.tickOnce() == BT::NodeStatus::SUCCESS;
 
     rclcpp::spin_some(node);
     rate.sleep();

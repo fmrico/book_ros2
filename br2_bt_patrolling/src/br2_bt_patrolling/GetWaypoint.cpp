@@ -18,7 +18,7 @@
 
 #include "br2_bt_patrolling/GetWaypoint.hpp"
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
+#include "behaviortree_cpp/behavior_tree.h"
 
 #include "geometry_msgs/msg/pose_stamped.hpp"
 
@@ -34,9 +34,6 @@ GetWaypoint::GetWaypoint(
   const BT::NodeConfiguration & conf)
 : BT::ActionNodeBase(xml_tag_name, conf)
 {
-  rclcpp::Node::SharedPtr node;
-  config().blackboard->get("node", node);
-
   geometry_msgs::msg::PoseStamped wp;
   wp.header.frame_id = "map";
   wp.pose.orientation.w = 1.0;
@@ -85,7 +82,7 @@ GetWaypoint::tick()
 
 }  // namespace br2_bt_patrolling
 
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "behaviortree_cpp/bt_factory.h"
 BT_REGISTER_NODES(factory)
 {
   factory.registerNodeType<br2_bt_patrolling::GetWaypoint>("GetWaypoint");

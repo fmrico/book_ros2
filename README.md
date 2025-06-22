@@ -1,6 +1,7 @@
 # A Concise Introduction to Robot Programming with ROS2 - Code Repository
 
 [![rolling](https://github.com/fmrico/book_ros2/actions/workflows/rolling.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/rolling.yaml)
+[![kilted-devel](https://github.com/fmrico/book_ros2/actions/workflows/kilted-devel.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/kilted-devel.yaml)
 [![jazzy-devel](https://github.com/fmrico/book_ros2/actions/workflows/jazzy-devel.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/jazzy-devel.yaml)
 [![GitHub Action
 Status](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml/badge.svg?branch=humble-devel)](https://github.com/fmrico/book_ros2)
@@ -12,6 +13,8 @@ Status](https://github.com/fmrico/book_ros2/workflows/foxy-devel/badge.svg)](htt
 This repository contains the source code shown and analyzed in the book _A Concise Introduction to Robot Programming with ROS2_, 2nd Edition, as well as complementary teaching material that will be added.
 
 **Requirements for `rolling` branch**: Ubuntu 24.04 LTS + ROS 2 Rolling Ridley
+
+**Requirements for `kilted` branch**: Ubuntu 24.04 LTS + ROS 2 Kilted Kaiju
 
 **Requirements for `jazzy-devel` branch**: Ubuntu 24.04 LTS + ROS 2 Jazzy Jalisco
 

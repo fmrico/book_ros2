@@ -28,7 +28,8 @@ yaets::TraceSession session("session1.log");
 class ProducerNode : public rclcpp::Node
 {
 public:
-  ProducerNode() : Node("producer_node")
+  ProducerNode()
+  : Node("producer_node")
   {
     pub_1_ = create_publisher<std_msgs::msg::Int32>("topic_1", 100);
     pub_2_ = create_publisher<std_msgs::msg::Int32>("topic_2", 100);
@@ -52,7 +53,8 @@ private:
 class ConsumerNode : public rclcpp::Node
 {
 public:
-  ConsumerNode() : Node("consumer_node")
+  ConsumerNode()
+  : Node("consumer_node")
   {
     custom_cb_ = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 
@@ -63,7 +65,7 @@ public:
       "topic_2", 100, std::bind(&ConsumerNode::cb_2, this, _1), options);
     sub_1_ = create_subscription<std_msgs::msg::Int32>(
       "topic_1", 100, std::bind(&ConsumerNode::cb_1, this, _1), options);
- 
+
     timer_ = create_wall_timer(10ms, std::bind(&ConsumerNode::timer_cb, this));
   }
 
@@ -91,7 +93,7 @@ public:
   void waste_time(const rclcpp::Duration & duration)
   {
     auto start = now();
-    while (now() - start < duration);
+    while (now() - start < duration) {}
   }
 
 private:
@@ -108,7 +110,7 @@ int main(int argc, char * argv[])
   auto node_pub = std::make_shared<ProducerNode>();
   auto node_sub1 = std::make_shared<ConsumerNode>();
 
-  //rclcpp::executors::SingleThreadedExecutor executor;
+  // rclcpp::executors::SingleThreadedExecutor executor;
   rclcpp::executors::MultiThreadedExecutor executor(rclcpp::ExecutorOptions(), 8);
 
   executor.add_node(node_pub);

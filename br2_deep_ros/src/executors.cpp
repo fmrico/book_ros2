@@ -28,7 +28,8 @@ yaets::TraceSession session("session1.log");
 class ProducerNode : public rclcpp::Node
 {
 public:
-  ProducerNode() : Node("producer_node")
+  ProducerNode()
+  : Node("producer_node")
   {
     pub_1_ = create_publisher<std_msgs::msg::Int32>("topic_1", 100);
     pub_2_ = create_publisher<std_msgs::msg::Int32>("topic_2", 100);
@@ -52,13 +53,14 @@ private:
 class ConsumerNode : public rclcpp::Node
 {
 public:
-  ConsumerNode() : Node("consumer_node")
+  ConsumerNode()
+  : Node("consumer_node")
   {
     sub_2_ = create_subscription<std_msgs::msg::Int32>(
       "topic_2", 100, std::bind(&ConsumerNode::cb_2, this, _1));
     sub_1_ = create_subscription<std_msgs::msg::Int32>(
       "topic_1", 100, std::bind(&ConsumerNode::cb_1, this, _1));
- 
+
     timer_ = create_wall_timer(10ms, std::bind(&ConsumerNode::timer_cb, this));
   }
 
@@ -86,7 +88,7 @@ public:
   void waste_time(const rclcpp::Duration & duration)
   {
     auto start = now();
-    while (now() - start < duration);
+    while (now() - start < duration) {}
   }
 
 private:

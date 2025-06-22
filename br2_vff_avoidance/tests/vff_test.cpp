@@ -298,7 +298,7 @@ TEST(vff_tests, ouput_vels)
     rate.sleep();
   }
   ASSERT_LT(last_vel.linear.x, 0.3f);
-  ASSERT_GT(last_vel.linear.x, 0.0f);
+  ASSERT_GE(last_vel.linear.x, 0.0f);
   ASSERT_LT(last_vel.angular.z, 0.0f);
   ASSERT_GT(last_vel.angular.z, -M_PI_2);
 

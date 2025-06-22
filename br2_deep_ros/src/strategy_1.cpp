@@ -29,13 +29,14 @@ yaets::TraceSession session("strategy_1.log");
 void waste_time(rclcpp::Node::SharedPtr node, const rclcpp::Duration & duration)
 {
   auto start = node->now();
-  while (node->now() - start < duration);
+  while (node->now() - start < duration) {}
 }
 
 class ProducerNode : public rclcpp::Node
 {
 public:
-  ProducerNode() : Node("producer_node")
+  ProducerNode()
+  : Node("producer_node")
   {
     pub_ = create_publisher<std_msgs::msg::Int32>("int_topic", 100);
     timer_ = create_wall_timer(10ms, std::bind(&ProducerNode::timer_callback, this));
@@ -60,11 +61,12 @@ private:
 class ConsumerNode : public rclcpp::Node
 {
 public:
-  ConsumerNode() : Node("consumer_node")
+  ConsumerNode()
+  : Node("consumer_node")
   {
     sub_ = create_subscription<std_msgs::msg::Int32>(
       "int_topic", 100, std::bind(&ConsumerNode::cb, this, _1));
- 
+
     timer_ = create_wall_timer(10ms, std::bind(&ConsumerNode::timer_cb, this));
   }
 
@@ -91,11 +93,12 @@ private:
 class LoggerNode : public rclcpp::Node
 {
 public:
-  LoggerNode() : Node("logger_node")
+  LoggerNode()
+  : Node("logger_node")
   {
     sub_ = create_subscription<std_msgs::msg::Int32>(
       "int_topic", 100, std::bind(&LoggerNode::cb, this, _1));
- 
+
     timer_ = create_wall_timer(10ms, std::bind(&LoggerNode::timer_cb, this));
   }
 
@@ -139,11 +142,11 @@ int main(int argc, char * argv[])
     [&]() {
       sched_param sch;
       sch.sched_priority = 90;
-      
+
       if (sched_setscheduler(0, SCHED_FIFO, &sch) == -1) {
         throw std::runtime_error{std::string("failed to set scheduler: ") + std::strerror(errno)};
       }
-      
+
       rt_executor.spin();
   });
 

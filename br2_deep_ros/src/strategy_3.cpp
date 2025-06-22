@@ -30,18 +30,19 @@ yaets::TraceSession session("strategy_3.log");
 void waste_time(rclcpp::Node::SharedPtr node, const rclcpp::Duration & duration)
 {
   auto start = node->now();
-  while (node->now() - start < duration);
+  while (node->now() - start < duration) {}
 }
 
 
 class SensorDriverNode : public rclcpp::Node
 {
 public:
-  SensorDriverNode() : Node("sensor_driver")
+  SensorDriverNode()
+  : Node("sensor_driver")
   {
     rt_callback_group_ = create_callback_group(
       rclcpp::CallbackGroupType::MutuallyExclusive, false);
-  
+
     pub_ = create_publisher<sensor_msgs::msg::Image>("image", 100);
     timer_scan_ = create_wall_timer(
       10ms, std::bind(&SensorDriverNode::produce_data, this), rt_callback_group_);
@@ -78,14 +79,15 @@ private:
 class ObstacleDetectorNode : public rclcpp::Node
 {
 public:
-  ObstacleDetectorNode() : Node("obstacle_detector")
+  ObstacleDetectorNode()
+  : Node("obstacle_detector")
   {
     rt_callback_group_ = create_callback_group(
       rclcpp::CallbackGroupType::MutuallyExclusive, false);
 
     rclcpp::SubscriptionOptions sub_options;
     sub_options.callback_group = rt_callback_group_;
-  
+
     sub_ = create_subscription<sensor_msgs::msg::Image>(
       "image", 100,
       std::bind(&ObstacleDetectorNode::detect_obstacle, this, _1),
@@ -97,7 +99,7 @@ public:
   void detect_obstacle(const sensor_msgs::msg::Image::SharedPtr msg)
   {
     waste_time(shared_from_this(), 5ms);
-    
+
     vision_msgs::msg::Detection3D detection_msg;
     pub_->publish(detection_msg);
   }
@@ -115,7 +117,7 @@ public:
 
 private:
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr sub_;
-  rclcpp::Publisher< vision_msgs::msg::Detection3D>::SharedPtr pub_;
+  rclcpp::Publisher<vision_msgs::msg::Detection3D>::SharedPtr pub_;
   rclcpp::TimerBase::SharedPtr timer_state_;
   rclcpp::CallbackGroup::SharedPtr rt_callback_group_;
 };
@@ -124,11 +126,12 @@ private:
 class LoggerNode : public rclcpp::Node
 {
 public:
-  LoggerNode() : Node("logger_node")
+  LoggerNode()
+  : Node("logger_node")
   {
     sub_ = create_subscription<sensor_msgs::msg::Image>(
       "image", 100, std::bind(&LoggerNode::cb, this, _1));
- 
+
     timer_state_ = create_wall_timer(10ms, std::bind(&LoggerNode::print_state, this));
   }
 
@@ -152,14 +155,15 @@ private:
 class BrakeActuatorNode : public rclcpp::Node
 {
 public:
-  BrakeActuatorNode() : Node("brake_actuator")
+  BrakeActuatorNode()
+  : Node("brake_actuator")
   {
     rt_callback_group_ = create_callback_group(
       rclcpp::CallbackGroupType::MutuallyExclusive, false);
 
     rclcpp::SubscriptionOptions sub_options;
     sub_options.callback_group = rt_callback_group_;
-  
+
     sub_ = create_subscription<vision_msgs::msg::Detection3D>(
       "obstacles", 100,
       std::bind(&BrakeActuatorNode::react_obstacle, this, _1),
@@ -224,11 +228,12 @@ int main(int argc, char * argv[])
     [&]() {
       // sched_param sch;
       // sch.sched_priority = 90;
-      // 
+      //
       // if (sched_setscheduler(0, SCHED_FIFO, &sch) == -1) {
-      //   throw std::runtime_error{std::string("failed to set scheduler: ") + std::strerror(errno)};
+      //   throw std::runtime_error{std::string("failed to set scheduler: ") +
+      //     std::strerror(errno)};
       // }
-      
+
       rt_executor.spin();
   });
 

@@ -12,9 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <tf2/transform_datatypes.h>
-#include <tf2/LinearMath/Quaternion.h>
-
 #include <memory>
 
 #include "br2_tf2_detector/ObstacleMonitorNode.hpp"
@@ -22,6 +19,8 @@
 #include "geometry_msgs/msg/transform_stamped.hpp"
 
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include "tf2/transform_datatypes.hpp"
+#include "tf2/LinearMath/Quaternion.hpp"
 
 #include "rclcpp/rclcpp.hpp"
 

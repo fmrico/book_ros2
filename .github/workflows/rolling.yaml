@@ -21,11 +21,11 @@ jobs:
         run: sudo apt-get install libfl-dev
       - uses: actions/checkout@v2
       - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@0.7.9
+        uses: ros-tooling/setup-ros@0.7.13
         with:
           required-ros-distributions: rolling
       - name: build and test
-        uses: ros-tooling/action-ros-ci@0.3.15
+        uses: ros-tooling/action-ros-ci@0.4.3
         with:
           package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
           target-ros2-distro: rolling

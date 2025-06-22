@@ -18,9 +18,9 @@
 #include <vector>
 #include <set>
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
-#include "behaviortree_cpp_v3/bt_factory.h"
-#include "behaviortree_cpp_v3/utils/shared_library.h"
+#include "behaviortree_cpp/behavior_tree.h"
+#include "behaviortree_cpp/bt_factory.h"
+#include "behaviortree_cpp/utils/shared_library.h"
 
 #include "ament_index_cpp/get_package_share_directory.hpp"
 
@@ -69,7 +69,7 @@ TEST(bt_action, turn_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <Turn />
       </BehaviorTree>
@@ -82,7 +82,7 @@ TEST(bt_action, turn_btn)
   rclcpp::Rate rate(10);
   bool finish = false;
   while (!finish && rclcpp::ok()) {
-    finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
     rclcpp::spin_some(node_sink);
     rate.sleep();
   }
@@ -108,7 +108,7 @@ TEST(bt_action, back_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <Back />
       </BehaviorTree>
@@ -121,7 +121,7 @@ TEST(bt_action, back_btn)
   rclcpp::Rate rate(10);
   bool finish = false;
   while (!finish && rclcpp::ok()) {
-    finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    finish = tree.tickOnce() == BT::NodeStatus::SUCCESS;
     rclcpp::spin_some(node_sink);
     rate.sleep();
   }
@@ -147,7 +147,7 @@ TEST(bt_action, forward_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <Forward />
       </BehaviorTree>
@@ -161,7 +161,7 @@ TEST(bt_action, forward_btn)
   auto current_status = BT::NodeStatus::FAILURE;
   int counter = 0;
   while (counter++ < 30 && rclcpp::ok()) {
-    current_status = tree.rootNode()->executeTick();
+    current_status = tree.tickOnce();
     rclcpp::spin_some(node_sink);
     rate.sleep();
   }
@@ -188,7 +188,7 @@ TEST(bt_action, is_obstacle_btn)
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <IsObstacle/>
       </BehaviorTree>
@@ -208,7 +208,7 @@ TEST(bt_action, is_obstacle_btn)
     rate.sleep();
   }
 
-  BT::NodeStatus current_status = tree.rootNode()->executeTick();
+  BT::NodeStatus current_status = tree.tickOnce();
   ASSERT_EQ(current_status, BT::NodeStatus::FAILURE);
 
   scan.ranges[0] = 0.3;
@@ -218,12 +218,12 @@ TEST(bt_action, is_obstacle_btn)
     rate.sleep();
   }
 
-  current_status = tree.rootNode()->executeTick();
+  current_status = tree.tickOnce();
   ASSERT_EQ(current_status, BT::NodeStatus::SUCCESS);
 
   xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <IsObstacle distance="0.5"/>
       </BehaviorTree>
@@ -237,7 +237,7 @@ TEST(bt_action, is_obstacle_btn)
     rate.sleep();
   }
 
-  current_status = tree.rootNode()->executeTick();
+  current_status = tree.tickOnce();
   ASSERT_EQ(current_status, BT::NodeStatus::SUCCESS);
 
   scan.ranges[0] = 0.6;
@@ -247,7 +247,7 @@ TEST(bt_action, is_obstacle_btn)
     rate.sleep();
   }
 
-  current_status = tree.rootNode()->executeTick();
+  current_status = tree.tickOnce();
   ASSERT_EQ(current_status, BT::NodeStatus::FAILURE);
 }
 

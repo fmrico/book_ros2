@@ -21,8 +21,8 @@
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 
 #include "br2_bt_patrolling/ctrl_support/BTLifecycleCtrlNode.hpp"
-#include "behaviortree_cpp_v3/behavior_tree.h"
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "behaviortree_cpp/behavior_tree.h"
+#include "behaviortree_cpp/bt_factory.h"
 
 namespace br2_bt_patrolling
 {

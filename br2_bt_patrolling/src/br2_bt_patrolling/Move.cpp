@@ -22,7 +22,7 @@
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
+#include "behaviortree_cpp/behavior_tree.h"
 
 namespace br2_bt_patrolling
 {
@@ -56,7 +56,7 @@ Move::on_success()
 
 }  // namespace br2_bt_patrolling
 
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "behaviortree_cpp/bt_factory.h"
 BT_REGISTER_NODES(factory)
 {
   BT::NodeBuilder builder =

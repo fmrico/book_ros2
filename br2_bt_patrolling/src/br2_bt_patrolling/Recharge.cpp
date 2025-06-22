@@ -18,7 +18,7 @@
 
 #include "br2_bt_patrolling/Recharge.hpp"
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
+#include "behaviortree_cpp/behavior_tree.h"
 
 namespace br2_bt_patrolling
 {
@@ -51,7 +51,7 @@ Recharge::tick()
 
 }  // namespace br2_bt_patrolling
 
-#include "behaviortree_cpp_v3/bt_factory.h"
+#include "behaviortree_cpp/bt_factory.h"
 BT_REGISTER_NODES(factory)
 {
   factory.registerNodeType<br2_bt_patrolling::Recharge>("Recharge");

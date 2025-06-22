@@ -15,10 +15,9 @@
 #include <string>
 #include <memory>
 
-#include "behaviortree_cpp_v3/behavior_tree.h"
-#include "behaviortree_cpp_v3/bt_factory.h"
-#include "behaviortree_cpp_v3/utils/shared_library.h"
-#include "behaviortree_cpp_v3/loggers/bt_zmq_publisher.h"
+#include "behaviortree_cpp/behavior_tree.h"
+#include "behaviortree_cpp/bt_factory.h"
+#include "behaviortree_cpp/utils/shared_library.h"
 
 #include "ament_index_cpp/get_package_share_directory.hpp"
 
@@ -38,7 +37,7 @@ int main(int argc, char * argv[])
 
   std::string xml_bt =
     R"(
-    <root main_tree_to_execute = "MainTree" >
+    <root BTCPP_format="4" main_tree_to_execute = "MainTree" >
       <BehaviorTree ID="MainTree">
           <Forward />
       </BehaviorTree>
@@ -51,7 +50,7 @@ int main(int argc, char * argv[])
   rclcpp::Rate rate(10);
   bool finish = false;
   while (!finish && rclcpp::ok()) {
-    finish = tree.rootNode()->executeTick() != BT::NodeStatus::RUNNING;
+    finish = tree.tickOnce() != BT::NodeStatus::RUNNING;
 
     rclcpp::spin_some(node);
     rate.sleep();

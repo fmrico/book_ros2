@@ -12,7 +12,7 @@ This repository contains the source code shown and analyzed in the book _A Conci
 
 **Requirements for `rolling` branch**: Ubuntu 24.04 LTS + ROS 2 Rolling Ridley
 
-**Requirements for `kilted` branch**: Ubuntu 24.04 LTS + ROS 2 Kilted Kaiju
+**Requirements for `kilted-devel` branch**: Ubuntu 24.04 LTS + ROS 2 Kilted Kaiju
 
 **Requirements for `jazzy-devel` branch**: Ubuntu 24.04 LTS + ROS 2 Jazzy Jalisco
 

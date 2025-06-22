@@ -3,10 +3,8 @@
 [![rolling](https://github.com/fmrico/book_ros2/actions/workflows/rolling.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/rolling.yaml)
 [![kilted-devel](https://github.com/fmrico/book_ros2/actions/workflows/kilted-devel.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/kilted-devel.yaml)
 [![jazzy-devel](https://github.com/fmrico/book_ros2/actions/workflows/jazzy-devel.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/jazzy-devel.yaml)
-[![GitHub Action
-Status](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml/badge.svg?branch=humble-devel)](https://github.com/fmrico/book_ros2)
-[![GitHub Action
-Status](https://github.com/fmrico/book_ros2/workflows/foxy-devel/badge.svg)](https://github.com/fmrico/book_ros2)
+[![humble-devel](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/humble-devel.yaml)
+[![foxy-devel](https://github.com/fmrico/book_ros2/actions/workflows/foxy-devel.yaml/badge.svg)](https://github.com/fmrico/book_ros2/actions/workflows/foxy-devel.yaml)
 
 ## Code
 

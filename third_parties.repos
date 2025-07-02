@@ -11,10 +11,6 @@ repositories:
     type: git
     url: https://github.com/Tiago-Harmonic/br2_gazebo_worlds.git
     version: main
-  ThirdParty/navigation2:
-    type: git
-    url: https://github.com/ros-navigation/navigation2.git
-    version: main
   ThirdParty/pal_maps:
     type: git
     url: https://github.com/pal-robotics/pal_maps

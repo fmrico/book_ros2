@@ -26,7 +26,7 @@ def generate_launch_description():
       }],
       remappings=[
         ('input_scan', '/scan_raw'),
-        ('output_vel', '/cmd_vel')
+        ('output_vel', '/key_vel')
       ],
       output='screen'
     )

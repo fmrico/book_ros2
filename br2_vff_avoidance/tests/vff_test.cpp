@@ -241,7 +241,7 @@ TEST(vff_tests, ouput_vels)
     executor.spin_some();
     rate.sleep();
   }
-  ASSERT_NEAR(last_vel.linear.x, 0.3f, 0.0001f);
+  ASSERT_NEAR(last_vel.linear.x, 0.1f, 0.0001f);
   ASSERT_NEAR(last_vel.angular.z, 0.0f, 0.0001f);
 
   // Test for scan test #2
@@ -251,7 +251,7 @@ TEST(vff_tests, ouput_vels)
     executor.spin_some();
     rate.sleep();
   }
-  ASSERT_NEAR(last_vel.linear.x, 0.3f, 0.0001f);
+  ASSERT_NEAR(last_vel.linear.x, 0.1f, 0.0001f);
   ASSERT_NEAR(last_vel.angular.z, 0.0f, 0.0001f);
 
   // Test for scan test #3
@@ -261,7 +261,7 @@ TEST(vff_tests, ouput_vels)
     executor.spin_some();
     rate.sleep();
   }
-  ASSERT_LT(last_vel.linear.x, 0.3f);
+  ASSERT_LT(last_vel.linear.x, 0.1f);
   ASSERT_GT(last_vel.linear.x, 0.0f);
   ASSERT_GT(last_vel.angular.z, 0.0f);
   ASSERT_LT(last_vel.angular.z, M_PI_2);
@@ -273,7 +273,7 @@ TEST(vff_tests, ouput_vels)
     executor.spin_some();
     rate.sleep();
   }
-  ASSERT_LT(last_vel.linear.x, 0.3f);
+  ASSERT_LT(last_vel.linear.x, 0.1f);
   ASSERT_GT(last_vel.linear.x, 0.0f);
   ASSERT_GT(last_vel.angular.z, 0.0f);
   ASSERT_LT(last_vel.angular.z, M_PI_2);
@@ -285,7 +285,7 @@ TEST(vff_tests, ouput_vels)
     executor.spin_some();
     rate.sleep();
   }
-  ASSERT_LT(last_vel.linear.x, 0.3f);
+  ASSERT_LT(last_vel.linear.x, 0.1f);
   ASSERT_GT(last_vel.linear.x, 0.0f);
   ASSERT_LT(last_vel.angular.z, 0.0f);
   ASSERT_GT(last_vel.angular.z, -M_PI_2);
@@ -297,7 +297,7 @@ TEST(vff_tests, ouput_vels)
     executor.spin_some();
     rate.sleep();
   }
-  ASSERT_LT(last_vel.linear.x, 0.3f);
+  ASSERT_LT(last_vel.linear.x, 0.1f);
   ASSERT_GE(last_vel.linear.x, 0.0f);
   ASSERT_LT(last_vel.angular.z, 0.0f);
   ASSERT_GT(last_vel.angular.z, -M_PI_2);
@@ -309,7 +309,7 @@ TEST(vff_tests, ouput_vels)
     executor.spin_some();
     rate.sleep();
   }
-  ASSERT_LT(last_vel.linear.x, 0.3f);
+  ASSERT_LT(last_vel.linear.x, 0.1f);
   ASSERT_GT(last_vel.linear.x, 0.0f);
   ASSERT_LT(last_vel.angular.z, 0.0f);
   ASSERT_GT(last_vel.angular.z, -M_PI_2);

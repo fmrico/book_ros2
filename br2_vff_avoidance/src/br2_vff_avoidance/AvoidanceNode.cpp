@@ -68,8 +68,8 @@ AvoidanceNode::control_cycle()
 
   // Create ouput message, controlling speed limits
   geometry_msgs::msg::Twist vel;
-  vel.linear.x = std::clamp(module, 0.0, 0.3);  // truncate linear vel to [0.0, 0.3] m/s
-  vel.angular.z = std::clamp(angle, -0.5, 0.5);  // truncate rotation vel to [-0.5, 0.5] rad/s
+  vel.linear.x = std::clamp(module, 0.0, 0.1);  // truncate linear vel to [0.0, 0.3] m/s
+  vel.angular.z = std::clamp(angle, -0.3, 0.3);  // truncate rotation vel to [-0.5, 0.5] rad/s
 
   vel_pub_->publish(vel);
 

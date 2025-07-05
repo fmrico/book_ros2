@@ -96,9 +96,19 @@ bt_navigator:
     # Built-in plugins are added automatically
     # plugin_lib_names: []
 
-    error_code_names:
-      - compute_path_error_code
-      - follow_path_error_code
+    error_code_name_prefixes:
+      - assisted_teleop
+      - backup
+      - compute_path
+      - dock_robot
+      - drive_on_heading
+      - follow_path
+      - nav_thru_poses
+      - nav_to_pose
+      - spin
+      - route
+      - undock_robot
+      - wait
 
 bt_navigator_navigate_through_poses_rclcpp_node:
   ros__parameters:
@@ -170,9 +180,9 @@ controller_server:
       debug_trajectory_details: True
       min_vel_x: 0.0
       min_vel_y: 0.0
-      max_vel_x: 0.3
+      max_vel_x: 0.1
       max_vel_y: 0.0
-      max_vel_theta: 5.00
+      max_vel_theta: 3.00
       min_speed_xy: 0.0
       max_speed_xy: 1.00
       min_speed_theta: 0.0

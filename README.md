@@ -75,10 +75,10 @@ pixi install -e kilted
 In `pixi.toml` there is a `build` task that builds with `colcon` and disables tests to avoid failures due to system dependencies.
 
 ```bash
-# Compilar con Jazzy
+# Build with Jazzy
 pixi run -e jazzy build
 
-# Compilar con Kilted
+# Build with Kilted
 pixi run -e kilted build
 ```
 

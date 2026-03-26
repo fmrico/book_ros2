@@ -7,27 +7,25 @@ on:
   push:
     branches:
       - humble-devel
+  workflow_dispatch:
 
 jobs:
   build-and-test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-22.04
     container:
-      image: osrf/ros:humble-desktop
-    strategy:
-      matrix:
-        os: [ubuntu-22.04]
-      fail-fast: false
+      image: ubuntu:jammy
     steps:
-      - name: Install deps
-        run: sudo apt-get update && sudo apt-get install -y wget python3-vcstool python3-colcon-coveragepy-result
-      - name: Create custom repos
-        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/fmrico/book_ros2/humble-devel/third_parties.repos
+      - name: Fix pip
+        run: pip3 install empy==3.3.4; pip3 install -U colcon-common-extensions
+      - name: Setup ROS 2
+        uses: ros-tooling/setup-ros@0.7.15
       - name: build and test
-        uses: ros-tooling/action-ros-ci@0.2.6
+        uses: ros-tooling/action-ros-ci@0.4.5
         with:
           package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
+          ref: humble-devel
           target-ros2-distro: humble
-          vcs-repo-file-url: /tmp/all.repos
+          vcs-repo-file-url: ${GITHUB_WORKSPACE}/third_parties.repos
           colcon-defaults: |
             {
               "test": {

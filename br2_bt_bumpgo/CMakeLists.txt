@@ -74,6 +74,11 @@ install(DIRECTORY behavior_tree_xml
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
+
+  # This file is vendored/third-party and may not match this repo's
+  # copyright-header expectations.
+  list(APPEND AMENT_LINT_AUTO_FILE_EXCLUDE "cmake/FindZMQ.cmake")
+
   ament_lint_auto_find_test_dependencies()
 
   set(ament_cmake_cpplint_FOUND TRUE)

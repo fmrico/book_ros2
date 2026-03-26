@@ -1,0 +1,91 @@
+[workspace]
+name = "robostack"
+description = "Development environment for RoboStack ROS packages"
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["linux-64"]
+
+# This will automatically activate the ros workspace on activation
+[target.unix.activation]
+# For activation scripts, we use bash for Unix-like systems
+scripts = ["install/setup.bash"]
+
+# To build you can use - `pixi run -e <ros distro> build <Any other temporary args>`
+[feature.build.target.unix.tasks]
+build = "colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPython_FIND_VIRTUALENV=ONLY -DPython3_FIND_VIRTUALENV=ONLY -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DBUILD_TESTING=OFF"
+
+# Dependencies used by all environments
+[dependencies]
+python = "*"
+# Build tools
+compilers = "*"
+cmake = "*"
+pkg-config = "*"
+make = "*"
+ninja = "*"
+# ROS specific tools
+rosdep = "*"
+colcon-common-extensions = "*"
+
+[target.linux.dependencies]
+libgl-devel = "*"
+
+# Define all the different ROS environments
+# Each environment corresponds to a different ROS distribution
+# and can be activated using the `pixi run/shell -e <environment>` command.
+[environments]
+jazzy = { features = ["jazzy", "build"] }
+kilted = { features = ["kilted", "build"] }
+
+### ROS Jazzy ####
+[feature.jazzy]
+channels = ["https://prefix.dev/robostack-jazzy"]
+
+[feature.jazzy.activation]
+env = { GZ_SIM_SYSTEM_PLUGIN_PATH = "$CONDA_PREFIX/lib", RMW_IMPLEMENTATION = "rmw_zenoh_cpp" }
+
+[feature.jazzy.dependencies]
+ros-jazzy-desktop = "*"
+ros-jazzy-behaviortree-cpp = "*"
+ros-jazzy-navigation2 = "*"
+ros-jazzy-nav2-bringup = "*"
+ros-jazzy-vision-msgs = "*"
+ros-jazzy-control-msgs = "*"
+ros-jazzy-image-transport = "*"
+ros-jazzy-cv-bridge = "*"
+ros-jazzy-moveit = "*"
+ros-jazzy-moveit-ros-control-interface = "*"
+ros-jazzy-controller-manager-msgs = "*"
+ros-jazzy-controller-manager = "*"
+ros-jazzy-ros2-controllers = "*"
+ros-jazzy-gz-ros2-control = "*"
+ros-jazzy-twist-mux = "*"
+ros-jazzy-ros-gz = "*"
+ros-jazzy-rmw-zenoh-cpp = "*"
+filelock = "*"
+
+### ROS Kilted ####
+[feature.kilted]
+channels = ["https://prefix.dev/robostack-kilted"]
+
+[feature.kilted.activation]
+env = { GZ_SIM_SYSTEM_PLUGIN_PATH = "$CONDA_PREFIX/lib", RMW_IMPLEMENTATION = "rmw_zenoh_cpp" }
+
+[feature.kilted.dependencies]
+ros-kilted-desktop = "*"
+ros-kilted-behaviortree-cpp = "*"
+ros-kilted-navigation2 = "*"
+ros-kilted-nav2-bringup = "*"
+ros-kilted-vision-msgs = "*"
+ros-kilted-control-msgs = "*"
+ros-kilted-image-transport = "*"
+ros-kilted-cv-bridge = "*"
+ros-kilted-moveit = "*"
+ros-kilted-moveit-ros-control-interface = "*"
+ros-kilted-controller-manager-msgs = "*"
+ros-kilted-controller-manager = "*"
+ros-kilted-ros2-controllers = "*"
+ros-kilted-gz-ros2-control = "*"
+ros-kilted-twist-mux = "*"
+ros-kilted-ros-gz = "*"
+ros-kilted-rmw-zenoh-cpp = "*"
+filelock = "*"

@@ -1,12 +1,12 @@
-name: jazzy-devel
+name: rolling
 
 on:
   pull_request:
     branches:
-      - jazzy-devel
+      - rolling
   push:
     branches:
-      - jazzy-devel
+      - rolling
   workflow_dispatch:
 jobs:
   build-and-test:
@@ -15,21 +15,18 @@ jobs:
       image: ubuntu:noble
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: jazzy-devel
       - name: Setup ROS 2
         uses: ros-tooling/setup-ros@0.7.15
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.4.5
         with:
-          package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
-          ref: jazzy-devel
-          target-ros2-distro: jazzy
-          vcs-repo-file-url: ${GITHUB_WORKSPACE}/third_parties.repos
+          package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance br2_deep_ros
+          target-ros2-distro: rolling
           colcon-defaults: |
             {
               "test": {
                 "parallel-workers" : 1
               }
             }
-            
+          vcs-repo-file-url: ${GITHUB_WORKSPACE}/third_parties.repos
+          colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml

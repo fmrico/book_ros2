@@ -1,12 +1,12 @@
-name: jazzy-devel
+name: kilted-devel
 
 on:
   pull_request:
     branches:
-      - jazzy-devel
+      - kilted-devel
   push:
     branches:
-      - jazzy-devel
+      - kilted-devel
   workflow_dispatch:
 jobs:
   build-and-test:
@@ -16,15 +16,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: jazzy-devel
+          ref: kilted-devel
       - name: Setup ROS 2
         uses: ros-tooling/setup-ros@0.7.15
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.4.5
         with:
-          package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
-          ref: jazzy-devel
-          target-ros2-distro: jazzy
+          package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance br2_deep_ros
+          ref: kilted-devel
+          target-ros2-distro: kilted
           vcs-repo-file-url: ${GITHUB_WORKSPACE}/third_parties.repos
           colcon-defaults: |
             {
@@ -32,4 +32,3 @@ jobs:
                 "parallel-workers" : 1
               }
             }
-            

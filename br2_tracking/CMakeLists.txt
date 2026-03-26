@@ -50,13 +50,13 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
 )
-target_link_libraries(${PROJECT_NAME} ${dependencies} ${OpenCV_LIBS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${dependencies} ${OpenCV_LIBS})
 
 add_executable(object_detector src/object_detector_main.cpp)
-target_link_libraries(object_detector ${PROJECT_NAME} ${dependencies} ${OpenCV_LIBS})
+target_link_libraries(object_detector PRIVATE ${PROJECT_NAME})
 
 add_executable(object_tracker src/object_tracker_main.cpp)
-target_link_libraries(object_tracker ${PROJECT_NAME} ${dependencies} ${OpenCV_LIBS})
+target_link_libraries(object_tracker PRIVATE ${PROJECT_NAME})
 
 
 install(TARGETS

@@ -9,25 +9,42 @@ find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 
-set(dependencies
-    rclcpp
-    sensor_msgs
-    geometry_msgs
-    visualization_msgs
+set(export_dependencies
+  rclcpp
+  sensor_msgs
+  geometry_msgs
+  visualization_msgs
 )
 
-include_directories(include)
+set(link_dependencies
+  rclcpp::rclcpp
+  ${sensor_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  ${visualization_msgs_TARGETS}
+)
 
 add_library(${PROJECT_NAME} SHARED src/br2_vff_avoidance/AvoidanceNode.cpp)
-ament_target_dependencies(${PROJECT_NAME} ${dependencies})
+target_include_directories(${PROJECT_NAME} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${link_dependencies})
 
 add_executable(avoidance_vff src/avoidance_vff_main.cpp)
-ament_target_dependencies(avoidance_vff ${dependencies})
-target_link_libraries(avoidance_vff ${PROJECT_NAME})
+target_include_directories(avoidance_vff PRIVATE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+)
+target_link_libraries(avoidance_vff PRIVATE ${PROJECT_NAME})
+
+install(
+  DIRECTORY include/
+  DESTINATION include/${PROJECT_NAME}
+)
 
 install(TARGETS
   ${PROJECT_NAME}
   avoidance_vff
+  EXPORT export_${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
@@ -46,5 +63,9 @@ if(BUILD_TESTING)
   add_subdirectory(tests)
 endif()
 
-ament_export_dependencies(${dependencies})
+ament_export_include_directories("include/${PROJECT_NAME}")
+ament_export_dependencies(${export_dependencies})
+ament_export_libraries(${PROJECT_NAME})
+ament_export_targets(export_${PROJECT_NAME})
+
 ament_package()

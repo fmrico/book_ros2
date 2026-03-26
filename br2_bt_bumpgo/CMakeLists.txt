@@ -85,7 +85,7 @@ if(BUILD_TESTING)
 endif()
 
 ament_export_include_directories("include/${PROJECT_NAME}")
-ament_export_libraries(${bt_plugin})
+ament_export_libraries(${plugin_libs})
 ament_export_dependencies(${export_dependencies})
 ament_export_targets(export_${PROJECT_NAME})
 

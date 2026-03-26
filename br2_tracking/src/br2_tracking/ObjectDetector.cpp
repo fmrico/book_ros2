@@ -19,8 +19,6 @@
 
 #include "br2_tracking/ObjectDetector.hpp"
 
-#include "geometry_msgs/msg/pose2_d.hpp"
-
 #include "image_transport/image_transport.hpp"
 #include "rclcpp/rclcpp.hpp"
 

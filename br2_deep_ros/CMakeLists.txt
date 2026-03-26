@@ -9,39 +9,45 @@ find_package(sensor_msgs REQUIRED)
 find_package(vision_msgs REQUIRED)
 find_package(yaets REQUIRED)
 
-set(dependencies
-    rclcpp::rclcpp
-    yaets::yaets
-    ${std_msgs_TARGETS}
-    ${sensor_msgs_TARGETS}
-    ${vision_msgs_TARGETS}
+set(export_dependencies
+  rclcpp
+  std_msgs
+  sensor_msgs
+  vision_msgs
+  yaets
 )
 
-include_directories(include)
+set(link_dependencies
+  rclcpp::rclcpp
+  yaets::yaets
+  ${std_msgs_TARGETS}
+  ${sensor_msgs_TARGETS}
+  ${vision_msgs_TARGETS}
+)
 
 add_executable(executors src/executors.cpp)
-target_link_libraries(executors ${dependencies})
+target_link_libraries(executors ${link_dependencies})
 
 add_executable(executors_cbg src/executors_cbg.cpp)
-target_link_libraries(executors_cbg ${dependencies})
+target_link_libraries(executors_cbg ${link_dependencies})
 
 add_executable(executors_cbg_reentrant src/executors_cbg_reentrant.cpp)
-target_link_libraries(executors_cbg_reentrant ${dependencies})
+target_link_libraries(executors_cbg_reentrant ${link_dependencies})
 
 add_executable(wakeup src/wakeup.cpp)
-target_link_libraries(wakeup ${dependencies})
+target_link_libraries(wakeup ${link_dependencies})
 
 add_executable(wakeup_ros src/wakeup_ros.cpp)
-target_link_libraries(wakeup_ros ${dependencies})
+target_link_libraries(wakeup_ros ${link_dependencies})
 
 add_executable(strategy_1 src/strategy_1.cpp)
-target_link_libraries(strategy_1 ${dependencies})
+target_link_libraries(strategy_1 ${link_dependencies})
 
 add_executable(strategy_2 src/strategy_2.cpp)
-target_link_libraries(strategy_2 ${dependencies})
+target_link_libraries(strategy_2 ${link_dependencies})
 
 add_executable(strategy_3 src/strategy_3.cpp)
-target_link_libraries(strategy_3 ${dependencies})
+target_link_libraries(strategy_3 ${link_dependencies})
 
 install(TARGETS
   executors
@@ -62,5 +68,5 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-ament_export_dependencies(${dependencies})
+ament_export_dependencies(${export_dependencies})
 ament_package()

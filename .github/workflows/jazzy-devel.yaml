@@ -7,27 +7,23 @@ on:
   push:
     branches:
       - jazzy-devel
-
-
+  workflow_dispatch:
 jobs:
   build-and-test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-24.04]
-      fail-fast: false
+    runs-on: ubuntu-24.04
+    container:
+      image: ubuntu:noble
     steps:
-      - name: Install popf deps
-        run: sudo apt-get install libfl-dev
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          ref: jazzy-devel
       - name: Setup ROS 2
         uses: ros-tooling/setup-ros@0.7.15
-        with:
-          required-ros-distributions: jazzy
       - name: build and test
-        uses: ros-tooling/action-ros-ci@0.4.4
+        uses: ros-tooling/action-ros-ci@0.4.5
         with:
           package-name: br2_basics br2_bt_bumpgo br2_bt_patrolling br2_fsm_bumpgo_cpp br2_fsm_bumpgo_py br2_navigation br2_tf2_detector br2_tiago br2_tracking br2_tracking_msgs br2_vff_avoidance
+          ref: jazzy-devel
           target-ros2-distro: jazzy
           vcs-repo-file-url: ${GITHUB_WORKSPACE}/third_parties.repos
           colcon-defaults: |
@@ -36,3 +32,4 @@ jobs:
                 "parallel-workers" : 1
               }
             }
+            
